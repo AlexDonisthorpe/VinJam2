@@ -19,11 +19,8 @@ public class Controller : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             
-            // Check for objects where you click
-            Vector3 screenPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Vector2 mousePos = new Vector2(screenPos.x, screenPos.y);
-            
-            RaycastHit2D hitData = Physics2D.Raycast(mousePos, Vector2.zero, 500);
+            RaycastHit2D hitData = CheckForControllers();
+
             if (hitData)
             {
                 // Deselect the current selected Object
@@ -38,11 +35,35 @@ public class Controller : MonoBehaviour
             }
         }
 
-        if (selectedObject != null && Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(1))
         {
-            selectedObject.GetComponent<IControllable>().HandleRightClick();
+            RaycastHit2D hitData = CheckForControllers();
+           
+            if (hitData)
+            {
+                IControllable controllable = hitData.transform.gameObject.GetComponent<IControllable>();
+                if (controllable != null) controllable.HandleRightClick();
+            }
+            else
+            {
+                selectedObject.GetComponent<IControllable>().HandleRightClick();
+            }
+            
         }
     }
 
+    public void Deselect()
+    {
+        selectedObject = null;
+    }
+
+    private RaycastHit2D CheckForControllers()
+    {
+        // Check for objects where you click
+        Vector3 screenPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 mousePos = new Vector2(screenPos.x, screenPos.y);
+
+        return Physics2D.Raycast(mousePos, Vector2.zero, 500);
+    }
 
 }

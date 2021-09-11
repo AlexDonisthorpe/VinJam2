@@ -8,9 +8,14 @@ public class House : MonoBehaviour, IControllable
     [SerializeField] private bool isActive = false;
     [SerializeField] private int maxGhosts = 1;
     [SerializeField] private int currentGhostCounter = 0;
+    [SerializeField] private Transform ghostSpawn;
 
     private List<Ghost> storedGhosts;
 
+    private void Start()
+    {
+        storedGhosts = new List<Ghost>();
+    }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
@@ -19,7 +24,10 @@ public class House : MonoBehaviour, IControllable
         Ghost ghost = other.gameObject.GetComponent<Ghost>();
         if (!ghost) return;
         
+        Debug.Log("Entering House");
         ghost.EnterHouse();
+        
+        Debug.Log("Storing Ghost");
         storedGhosts.Add(ghost);
         currentGhostCounter++;
 
@@ -28,16 +36,22 @@ public class House : MonoBehaviour, IControllable
 
     public void HandleRightClick()
     {
-        throw new NotImplementedException();
+        if (currentGhostCounter == 0) return;
+        
+        storedGhosts[storedGhosts.Count-1].LeaveHouse(ghostSpawn.position);
+        storedGhosts.RemoveAt(storedGhosts.Count - 1);
+        currentGhostCounter--;
+
+        if (currentGhostCounter == 0) GetComponent<SpriteRenderer>().color = Color.cyan;
     }
 
     public void HandleDeselect()
     {
-        throw new NotImplementedException();
+        return;
     }
 
     public void HandleSelected()
     {
-        throw new NotImplementedException();
+        return;
     }
 }

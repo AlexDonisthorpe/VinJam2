@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class Ghost : MonoBehaviour
 {
+    private Controller controllerRef;
+    
     // Start is called before the first frame update
     void Start()
     {
-        
+        controllerRef = FindObjectOfType<Controller>();
     }
 
     // Update is called once per frame
@@ -19,6 +21,15 @@ public class Ghost : MonoBehaviour
     public void EnterHouse()
     {
         GetComponent<SpriteRenderer>().enabled = false;
+        controllerRef.Deselect();
+    }
+
+    public void LeaveHouse(Vector2 spawnPos)
+    {
+        transform.position = (Vector3)spawnPos;
+        GetComponent<Mover>().SetTargetLocation(spawnPos);
+        ChangeColor(Color.yellow);
+        GetComponent<SpriteRenderer>().enabled = true;
     }
 
     public void ChangeColor(Color color)

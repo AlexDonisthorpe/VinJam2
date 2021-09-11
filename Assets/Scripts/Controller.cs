@@ -23,7 +23,12 @@ public class Controller : MonoBehaviour
             RaycastHit2D hitData = Physics2D.Raycast(mousePos, Vector2.zero, 500);
             if (hitData)
             {
+                if (selectedObject)
+                {
+                    selectedObject.GetComponent<SpriteRenderer>().color = Color.yellow;
+                }
                 selectedObject = hitData.transform.gameObject;
+                selectedObject.GetComponent<SpriteRenderer>().color = Color.red;
                 Debug.Log("Selected: " + selectedObject.name);
             }
         }

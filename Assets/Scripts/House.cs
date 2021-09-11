@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class House : MonoBehaviour, IControllable
@@ -9,12 +10,20 @@ public class House : MonoBehaviour, IControllable
     [SerializeField] private int maxGhosts = 1;
     [SerializeField] private int currentGhostCounter = 0;
     [SerializeField] private Transform ghostSpawn;
+    [SerializeField] private GameObject infoUICanvas;
 
-    private List<Ghost> storedGhosts;
+    [SerializeField] private static float tickRate = 3.0f;
+    private float _currentCounter = 0;
+
+    private int pointsPerTick = 1;
+    
+    private List<Ghost> _storedGhosts;
+    private LevelController _levelController;
 
     private void Start()
     {
-        storedGhosts = new List<Ghost>();
+        _storedGhosts = new List<Ghost>();
+        _levelController = FindObjectOfType<LevelController>();
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -28,30 +37,54 @@ public class House : MonoBehaviour, IControllable
         ghost.EnterHouse();
         
         Debug.Log("Storing Ghost");
-        storedGhosts.Add(ghost);
+        _storedGhosts.Add(ghost);
         currentGhostCounter++;
+        UpdateUI();
 
-        if(currentGhostCounter == maxGhosts) GetComponent<SpriteRenderer>().color = Color.blue;
+        if(currentGhostCounter == maxGhosts) GetComponentInChildren<SpriteRenderer>().color = Color.blue;
     }
 
     public void HandleRightClick()
     {
         if (currentGhostCounter == 0) return;
         
-        storedGhosts[storedGhosts.Count-1].LeaveHouse(ghostSpawn.position);
-        storedGhosts.RemoveAt(storedGhosts.Count - 1);
+        _storedGhosts[_storedGhosts.Count-1].LeaveHouse(ghostSpawn.position);
+        _storedGhosts.RemoveAt(_storedGhosts.Count - 1);
         currentGhostCounter--;
+        UpdateUI();
 
-        if (currentGhostCounter == 0) GetComponent<SpriteRenderer>().color = Color.cyan;
+        if (currentGhostCounter != maxGhosts) GetComponentInChildren<SpriteRenderer>().color = Color.cyan;
     }
 
     public void HandleDeselect()
     {
-        return;
+        UpdateUI();
+        infoUICanvas.SetActive(false);
     }
 
     public void HandleSelected()
     {
-        return;
+        UpdateUI();
+        infoUICanvas.SetActive(true);
+    }
+
+    private void UpdateUI()
+    {
+        if (!infoUICanvas) return;
+
+        String details = string.Format("{0} / {1}", currentGhostCounter, maxGhosts);
+        infoUICanvas.GetComponentInChildren<TextMeshProUGUI>().text = details;
+    }
+
+    private void Update()
+    {
+        if (currentGhostCounter == 0) return;
+        
+        _currentCounter += Time.deltaTime;
+
+        if (!(_currentCounter >= tickRate)) return;
+        
+        _currentCounter = 0;
+        _levelController.updateScore(pointsPerTick * currentGhostCounter);
     }
 }

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Controller : MonoBehaviour
 {
+    private GameObject selectedObject;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,7 +21,20 @@ public class Controller : MonoBehaviour
             Vector2 mousePos = new Vector2(screenPos.x, screenPos.y);
 
             RaycastHit2D hitData = Physics2D.Raycast(mousePos, Vector2.zero, 500);
-            if(hitData) Debug.Log(hitData.transform.gameObject.name);
+            if (hitData)
+            {
+                selectedObject = hitData.transform.gameObject;
+                Debug.Log("Selected: " + selectedObject.name);
+            }
+        }
+
+        if (selectedObject != null && Input.GetMouseButtonDown(1))
+        {
+            Mover objectMover = selectedObject.GetComponent<Mover>();
+            if (!objectMover) return;
+            
+            Debug.Log("Moving");
+            objectMover.SetTargetLocation(Camera.main.ScreenToWorldPoint(Input.mousePosition));
         }
     }
 }

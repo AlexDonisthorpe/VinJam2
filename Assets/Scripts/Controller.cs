@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -23,12 +24,15 @@ public class Controller : MonoBehaviour
             RaycastHit2D hitData = Physics2D.Raycast(mousePos, Vector2.zero, 500);
             if (hitData)
             {
-                if (selectedObject)
+                if (selectedObject && selectedObject.GetComponent<Ghost>())
                 {
                     selectedObject.GetComponent<SpriteRenderer>().color = Color.yellow;
                 }
                 selectedObject = hitData.transform.gameObject;
-                selectedObject.GetComponent<SpriteRenderer>().color = Color.red;
+                if (selectedObject.GetComponent<Ghost>())
+                {
+                    selectedObject.GetComponent<SpriteRenderer>().color = Color.red;
+                }
                 Debug.Log("Selected: " + selectedObject.name);
             }
         }
@@ -38,8 +42,9 @@ public class Controller : MonoBehaviour
             Mover objectMover = selectedObject.GetComponent<Mover>();
             if (!objectMover) return;
             
-            Debug.Log("Moving");
             objectMover.SetTargetLocation(Camera.main.ScreenToWorldPoint(Input.mousePosition));
         }
     }
+
+
 }

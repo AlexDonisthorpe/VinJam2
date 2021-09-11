@@ -30,4 +30,9 @@ public class Mover : MonoBehaviour
         Vector2 targetDirection = (targetPosition - (Vector2)transform.position).normalized;
         transform.position += (Vector3)(targetDirection * moveSpeed * Time.deltaTime);
     }
+    
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        targetPosition = transform.position;
+    }
 }

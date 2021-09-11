@@ -20,4 +20,9 @@ public class Ghost : MonoBehaviour
     {
         GetComponent<SpriteRenderer>().enabled = false;
     }
+
+    public void ChangeColor(Color color)
+    {
+        GetComponent<SpriteRenderer>().color = color;
+    }
 }

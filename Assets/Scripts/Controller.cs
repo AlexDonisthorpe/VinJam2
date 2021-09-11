@@ -18,31 +18,29 @@ public class Controller : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
+            
+            // Check for objects where you click
             Vector3 screenPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2 mousePos = new Vector2(screenPos.x, screenPos.y);
-
+            
             RaycastHit2D hitData = Physics2D.Raycast(mousePos, Vector2.zero, 500);
             if (hitData)
             {
-                if (selectedObject && selectedObject.GetComponent<Ghost>())
+                // Deselect the current selected Object
+                if (selectedObject)
                 {
-                    selectedObject.GetComponent<SpriteRenderer>().color = Color.yellow;
+                    selectedObject.GetComponent<IControllable>().HandleDeselect();
                 }
+                
+                // Select the new object
                 selectedObject = hitData.transform.gameObject;
-                if (selectedObject.GetComponent<Ghost>())
-                {
-                    selectedObject.GetComponent<SpriteRenderer>().color = Color.red;
-                }
-                Debug.Log("Selected: " + selectedObject.name);
+                selectedObject.GetComponent<IControllable>().HandleSelected();
             }
         }
 
         if (selectedObject != null && Input.GetMouseButtonDown(1))
         {
-            Mover objectMover = selectedObject.GetComponent<Mover>();
-            if (!objectMover) return;
-            
-            objectMover.SetTargetLocation(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+            selectedObject.GetComponent<IControllable>().HandleRightClick();
         }
     }
 

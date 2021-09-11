@@ -48,12 +48,17 @@ public class Controller : MonoBehaviour
             {
                 selectedObject.GetComponent<IControllable>().HandleRightClick();
             }
-            
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Deselect();
         }
     }
 
     public void Deselect()
     {
+        selectedObject.GetComponent<IControllable>().HandleDeselect();
         selectedObject = null;
     }
 

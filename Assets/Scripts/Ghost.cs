@@ -28,7 +28,6 @@ public class Ghost : MonoBehaviour
     {
         transform.position = (Vector3)spawnPos;
         GetComponent<Mover>().SetTargetLocation(spawnPos);
-        ChangeColor(Color.yellow);
         GetComponent<SpriteRenderer>().enabled = true;
     }
 

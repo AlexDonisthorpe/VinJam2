@@ -37,17 +37,8 @@ public class Controller : MonoBehaviour
 
         if (Input.GetMouseButtonDown(1))
         {
-            RaycastHit2D hitData = CheckForControllers();
-           
-            if (hitData)
-            {
-                IControllable controllable = hitData.transform.gameObject.GetComponent<IControllable>();
-                if (controllable != null) controllable.HandleRightClick();
-            }
-            else
-            {
-                selectedObject.GetComponent<IControllable>().HandleRightClick();
-            }
+            if (!selectedObject) return;
+            selectedObject.GetComponent<IControllable>().HandleRightClick();
         }
 
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -58,6 +49,7 @@ public class Controller : MonoBehaviour
 
     public void Deselect()
     {
+        if (!selectedObject) return;
         selectedObject.GetComponent<IControllable>().HandleDeselect();
         selectedObject = null;
     }

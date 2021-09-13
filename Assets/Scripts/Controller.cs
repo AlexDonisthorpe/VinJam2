@@ -43,13 +43,15 @@ public class Controller : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Deselect();
+            Deselect(selectedObject);
         }
     }
 
-    public void Deselect()
+    public void Deselect(GameObject gameObject)
     {
         if (!selectedObject) return;
+        if (gameObject != selectedObject) return;
+        
         selectedObject.GetComponent<IControllable>().HandleDeselect();
         selectedObject = null;
     }

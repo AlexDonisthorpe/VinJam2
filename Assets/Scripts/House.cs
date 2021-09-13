@@ -2,11 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor.SearchService;
 using UnityEngine;
 
 public class House : MonoBehaviour, IControllable
 {
-    [SerializeField] private bool isActive = false;
+    [SerializeField] private float hauntingTimer = 10f;
+    [SerializeField] private bool isEnabled = false;
     [SerializeField] private int maxGhosts = 1;
     [SerializeField] private int currentGhostCounter = 0;
     [SerializeField] private Transform ghostSpawn;
@@ -22,13 +24,14 @@ public class House : MonoBehaviour, IControllable
 
     private void Start()
     {
+        GetComponentInChildren<SpriteRenderer>().color = Color.blue;
         _storedGhosts = new List<Ghost>();
         _levelController = FindObjectOfType<LevelController>();
     }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (currentGhostCounter == maxGhosts) return;
+        if (!isEnabled || currentGhostCounter == maxGhosts) return;
 
         Ghost ghost = other.gameObject.GetComponent<Ghost>();
         if (!ghost) return;
@@ -40,8 +43,6 @@ public class House : MonoBehaviour, IControllable
         _storedGhosts.Add(ghost);
         currentGhostCounter++;
         UpdateUI();
-
-        if(currentGhostCounter == maxGhosts) GetComponentInChildren<SpriteRenderer>().color = Color.blue;
     }
 
     public void HandleRightClick()
@@ -52,8 +53,6 @@ public class House : MonoBehaviour, IControllable
         _storedGhosts.RemoveAt(_storedGhosts.Count - 1);
         currentGhostCounter--;
         UpdateUI();
-
-        if (currentGhostCounter != maxGhosts) GetComponentInChildren<SpriteRenderer>().color = Color.cyan;
     }
 
     public void HandleDeselect()
@@ -72,13 +71,13 @@ public class House : MonoBehaviour, IControllable
     {
         if (!infoUICanvas) return;
 
-        String details = string.Format("{0} / {1}", currentGhostCounter, maxGhosts);
+        String details = $"{currentGhostCounter} / {maxGhosts}";
         infoUICanvas.GetComponentInChildren<TextMeshProUGUI>().text = details;
     }
 
     private void Update()
     {
-        if (currentGhostCounter == 0) return;
+        if (currentGhostCounter == 0 || !isEnabled) return;
         
         _currentCounter += Time.deltaTime;
 
@@ -86,5 +85,32 @@ public class House : MonoBehaviour, IControllable
         
         _currentCounter = 0;
         _levelController.updateScore(pointsPerTick * currentGhostCounter);
+    }
+
+    public bool GetEnabled()
+    {
+        return isEnabled;
+    }
+
+    public void SetEnabled()
+    {
+        StartCoroutine(Haunting());
+    }
+
+    private IEnumerator Haunting()
+    {
+        isEnabled = true;
+        GetComponentInChildren<SpriteRenderer>().color = Color.cyan;
+        yield return new WaitForSeconds(hauntingTimer);
+        isEnabled = false;
+        foreach (Ghost ghost in _storedGhosts)
+        {
+            ghost.LeaveHouse(ghostSpawn.position);
+            --currentGhostCounter;
+        }
+        _storedGhosts.Clear();
+        GetComponentInParent<HouseController>().UpdateActiveHouses();
+        GetComponentInChildren<SpriteRenderer>().color = Color.blue;
+        UpdateUI();
     }
 }

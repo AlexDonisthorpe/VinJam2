@@ -3,11 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEditor.SearchService;
+using UnityEditor.U2D;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class House : MonoBehaviour, IControllable
 {
-    [SerializeField] private GameObject GhostPrefab;
+    [FormerlySerializedAs("GhostPrefab")] [SerializeField] private GameObject ghostPrefab;
     
     
     [SerializeField] private float hauntingTimer = 10f;
@@ -25,9 +27,11 @@ public class House : MonoBehaviour, IControllable
     private List<Ghost> _storedGhosts;
     private LevelController _levelController;
 
+    private SpriteRenderer _childSpriteRenderer;
+
     private void Start()
     {
-        GetComponentInChildren<SpriteRenderer>().color = Color.blue;
+        _childSpriteRenderer = GetComponentInChildren<SpriteRenderer>();
         _storedGhosts = new List<Ghost>();
         _levelController = FindObjectOfType<LevelController>();
     }
@@ -103,19 +107,23 @@ public class House : MonoBehaviour, IControllable
     private IEnumerator Haunting()
     {
         isEnabled = true;
-        GetComponentInChildren<SpriteRenderer>().color = Color.cyan;
+        _childSpriteRenderer.color = Color.cyan;
+        
         yield return new WaitForSeconds(hauntingTimer);
         isEnabled = false;
-        foreach (Ghost ghost in _storedGhosts)
+        
+        if(_storedGhosts.Count > 0) Instantiate(ghostPrefab, ghostSpawn.position, Quaternion.identity, transform.parent);
+
+        foreach (Ghost ghost in _storedGhosts) 
         {
             ghost.LeaveHouse(ghostSpawn.position);
             --currentGhostCounter;
         }
         _storedGhosts.Clear();
+        
         GetComponentInParent<HouseController>().DecreaseActiveHouses();
-        GetComponentInChildren<SpriteRenderer>().color = Color.blue;
+        _childSpriteRenderer.color = Color.blue;
 
-        Instantiate(GhostPrefab, ghostSpawn.position, Quaternion.identity, transform.parent);
         UpdateUI();
     }
 }

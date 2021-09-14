@@ -7,6 +7,9 @@ using UnityEngine;
 
 public class House : MonoBehaviour, IControllable
 {
+    [SerializeField] private GameObject GhostPrefab;
+    
+    
     [SerializeField] private float hauntingTimer = 10f;
     [SerializeField] private bool isEnabled = false;
     [SerializeField] private int maxGhosts = 1;
@@ -109,8 +112,10 @@ public class House : MonoBehaviour, IControllable
             --currentGhostCounter;
         }
         _storedGhosts.Clear();
-        GetComponentInParent<HouseController>().UpdateActiveHouses();
+        GetComponentInParent<HouseController>().DecreaseActiveHouses();
         GetComponentInChildren<SpriteRenderer>().color = Color.blue;
+
+        Instantiate(GhostPrefab, ghostSpawn.position, Quaternion.identity, transform.parent);
         UpdateUI();
     }
 }

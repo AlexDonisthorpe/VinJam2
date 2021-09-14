@@ -51,6 +51,7 @@ public class LevelTimer : MonoBehaviour
             if (_sectionTimer <= 0)
             {
                 _sectionTimer = _maxSectionDuration;
+                FindObjectOfType<HouseController>().UpdateTotalHouses();
                 FindObjectOfType<CameraScaler>().ScaleOut();
             }
         }

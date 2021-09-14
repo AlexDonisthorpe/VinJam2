@@ -5,12 +5,12 @@ using UnityEngine;
 
 public class CameraScaler : MonoBehaviour
 {
+    [SerializeField] private float[] scaleTargets;
+    
     private bool _scalingOut = false;
-    private float _scaleValue;
-    private float _scaleTarget = 0f;
-    private float _timeSpentLerping = 0f;
-
+    private int _scaleTargetIndex = 0;
     private float velocity = 0f;
+
     private Camera _camera;
     private void Start()
     {
@@ -22,22 +22,14 @@ public class CameraScaler : MonoBehaviour
     {
         if (_scalingOut)
         {
-            _camera.orthographicSize = Mathf.SmoothDamp(_camera.orthographicSize, _scaleTarget, ref velocity , 1f);
-            if (_camera.orthographicSize >= _scaleTarget)
-            {
-                _scalingOut = false;
-                velocity = 0f;
-            }
+            _camera.orthographicSize = Mathf.SmoothDamp(_camera.orthographicSize, scaleTargets[_scaleTargetIndex], ref velocity , 1f);
         }
     }
 
     public void ScaleOut()
     {
-        float orthoSize = _camera.orthographicSize;
-        _scaleTarget = orthoSize + 1;
+        _scaleTargetIndex++;
         _scalingOut = true;
-        Debug.Log(_scaleValue);
-
     }
 
 }

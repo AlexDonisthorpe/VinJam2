@@ -5,17 +5,12 @@ using UnityEngine;
 public class Ghost : MonoBehaviour
 {
     private Controller controllerRef;
-    
+    private static readonly int Selected = Animator.StringToHash("Selected");
+
     // Start is called before the first frame update
     void Start()
     {
         controllerRef = FindObjectOfType<Controller>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void EnterHouse()
@@ -34,5 +29,15 @@ public class Ghost : MonoBehaviour
     public void ChangeColor(Color color)
     {
         GetComponent<SpriteRenderer>().color = color;
+    }
+
+    public void Select()
+    {
+        GetComponent<Animator>().SetBool(Selected, true);
+    }
+
+    public void Unselect()
+    {
+        GetComponent<Animator>().SetBool(Selected, false);
     }
 }

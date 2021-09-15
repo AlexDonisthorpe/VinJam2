@@ -10,7 +10,7 @@ public class BossChatController : MonoBehaviour
 
     private void Start()
     {
-        GetComponent<Animator>().SetTrigger(StartMessage);
+        //GetComponent<Animator>().SetTrigger(StartMessage);
     }
 
     public void ShowMessage(string message)

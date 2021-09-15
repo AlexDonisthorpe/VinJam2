@@ -22,10 +22,9 @@ public class LevelTimer : MonoBehaviour
         
         _slider = GetComponentInChildren<Slider>();
         _slider.maxValue = levelDurationInSeconds;
-        StartTimer();
     }
 
-    private void StartTimer()
+    public void StartTimer()
     {
         levelTimer = levelDurationInSeconds;
         _timer = true;

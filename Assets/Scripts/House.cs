@@ -18,15 +18,16 @@ public class House : MonoBehaviour, IControllable
     [SerializeField] private int currentGhostCounter = 0;
     [SerializeField] private Transform ghostSpawn;
     [SerializeField] private GameObject infoUICanvas;
-
     [SerializeField] private static float tickRate = 3.0f;
-    private float _currentCounter = 0;
-
-    private int pointsPerTick = 1;
+    [SerializeField] private Sprite activeSprite;
+    [SerializeField] private Sprite inactiveSprite;
     
+    
+    
+    private float _currentCounter = 0;
+    private int pointsPerTick = 1;
     private List<Ghost> _storedGhosts;
     private LevelController _levelController;
-
     private SpriteRenderer _childSpriteRenderer;
 
     private void OnEnable()
@@ -105,7 +106,7 @@ public class House : MonoBehaviour, IControllable
     private IEnumerator Haunting()
     {
         isEnabled = true;
-        _childSpriteRenderer.color = Color.cyan;
+        _childSpriteRenderer.sprite = activeSprite;
         
         yield return new WaitForSeconds(hauntingTimer);
         isEnabled = false;
@@ -120,7 +121,7 @@ public class House : MonoBehaviour, IControllable
         _storedGhosts.Clear();
         
         GetComponentInParent<HouseController>().DecreaseActiveHouses();
-        _childSpriteRenderer.color = Color.blue;
+        _childSpriteRenderer.sprite = inactiveSprite;
 
         UpdateUI();
     }

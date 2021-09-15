@@ -6,16 +6,13 @@ using UnityEngine;
 public class Controller : MonoBehaviour
 {
     private GameObject selectedObject;
+    private bool isPaused = false;
+    private bool hasStarted = false;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
+        if(!hasStarted) return;
+        
         if (Input.GetMouseButtonDown(0))
         {
             
@@ -43,7 +40,20 @@ public class Controller : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Deselect(selectedObject);
+            if (isPaused)
+            {
+                FindObjectOfType<PauseMenu>().Continue();
+                isPaused = false;
+            }
+            else if (selectedObject == null)
+            {
+                FindObjectOfType<PauseMenu>().Pause();
+                isPaused = true;
+            }
+            else
+            {
+                Deselect(selectedObject);
+            }
         }
     }
 
@@ -63,6 +73,11 @@ public class Controller : MonoBehaviour
         Vector2 mousePos = new Vector2(screenPos.x, screenPos.y);
 
         return Physics2D.Raycast(mousePos, Vector2.zero, 500);
+    }
+
+    public void StartGame()
+    {
+        hasStarted = true;
     }
 
 }

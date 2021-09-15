@@ -28,6 +28,7 @@ public class LevelTimer : MonoBehaviour
     {
         levelTimer = levelDurationInSeconds;
         _timer = true;
+        FindObjectOfType<Controller>().StartGame();
     }
 
     // Update is called once per frame

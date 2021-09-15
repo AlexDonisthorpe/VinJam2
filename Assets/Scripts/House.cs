@@ -43,10 +43,8 @@ public class House : MonoBehaviour, IControllable
         Ghost ghost = other.gameObject.GetComponent<Ghost>();
         if (!ghost) return;
         
-        Debug.Log("Entering House");
         ghost.EnterHouse();
         
-        Debug.Log("Storing Ghost");
         _storedGhosts.Add(ghost);
         currentGhostCounter++;
         UpdateUI();

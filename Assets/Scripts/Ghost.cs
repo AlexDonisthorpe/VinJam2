@@ -15,6 +15,7 @@ public class Ghost : MonoBehaviour
 
     public void EnterHouse()
     {
+        GetComponent<Mover>().Stop();
         GetComponent<SpriteRenderer>().enabled = false;
         controllerRef.Deselect(gameObject);
     }
@@ -22,7 +23,6 @@ public class Ghost : MonoBehaviour
     public void LeaveHouse(Vector2 spawnPos)
     {
         transform.position = (Vector3)spawnPos;
-        GetComponent<Mover>().SetTargetLocation(spawnPos);
         GetComponent<SpriteRenderer>().enabled = true;
     }
 

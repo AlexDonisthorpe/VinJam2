@@ -29,7 +29,7 @@ public class House : MonoBehaviour, IControllable
 
     private SpriteRenderer _childSpriteRenderer;
 
-    private void Start()
+    private void OnEnable()
     {
         _childSpriteRenderer = GetComponentInChildren<SpriteRenderer>();
         _storedGhosts = new List<Ghost>();

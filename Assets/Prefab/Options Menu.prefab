@@ -1331,6 +1331,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainMenu: {fileID: 0}
   mixer: {fileID: 24100000, guid: e4299675d23b519408e2152cb5a66179, type: 2}
+  masterSlider: {fileID: 9068449512521261916}
+  sfxSlider: {fileID: 9068449512414287244}
+  musicSlider: {fileID: 9068449511176051389}
 --- !u!1 &9068449512350114699
 GameObject:
   m_ObjectHideFlags: 0

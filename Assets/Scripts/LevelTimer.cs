@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
+using Pathfinding;
 
 public class LevelTimer : MonoBehaviour
 {
@@ -53,6 +54,7 @@ public class LevelTimer : MonoBehaviour
                 _sectionTimer = _maxSectionDuration;
                 FindObjectOfType<HouseController>().UpdateTotalHouses();
                 FindObjectOfType<CameraScaler>().ScaleOut();
+                AstarPath.active.Scan();
             }
         }
         

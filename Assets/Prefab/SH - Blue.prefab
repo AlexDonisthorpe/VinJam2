@@ -208,12 +208,14 @@ MonoBehaviour:
   ghostPrefab: {fileID: 8443691246614493158, guid: 4e6385095cb5277409252742708b8a41, type: 3}
   hauntingTimer: 20
   isEnabled: 0
-  maxGhosts: 2
+  maxGhosts: 1
   currentGhostCounter: 0
   ghostSpawn: {fileID: 48007099189798152}
   infoUICanvas: {fileID: 48007099896657351}
   activeSprite: {fileID: 21300000, guid: e259cc2abe49df74f884af961cb851d3, type: 3}
   inactiveSprite: {fileID: 21300000, guid: 5331db01c4b07cd4caf1228cb8af9442, type: 3}
+  _currentTimer: 0
+  currentGhostTimer: 0
 --- !u!61 &48007099064068555
 BoxCollider2D:
   m_ObjectHideFlags: 0

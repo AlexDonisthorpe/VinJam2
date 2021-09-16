@@ -40,7 +40,7 @@ public class House : MonoBehaviour, IControllable
         maxGhostTimer = hauntingTimer / 2;
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (!isEnabled || currentGhostCounter == maxGhosts) return;
 

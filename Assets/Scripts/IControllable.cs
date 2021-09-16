@@ -1,6 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+// Interface for the clickable objects within the game (Ghost & House)
 
 public interface IControllable
 {

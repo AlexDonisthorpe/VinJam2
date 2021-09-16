@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraScaler : MonoBehaviour
@@ -9,7 +6,7 @@ public class CameraScaler : MonoBehaviour
     
     private bool _scalingOut = false;
     private int _scaleTargetIndex = 0;
-    private float velocity = 0f;
+    private float _velocity = 0f;
 
     private Camera _camera;
     private void Start()
@@ -22,7 +19,7 @@ public class CameraScaler : MonoBehaviour
     {
         if (_scalingOut)
         {
-            _camera.orthographicSize = Mathf.SmoothDamp(_camera.orthographicSize, scaleTargets[_scaleTargetIndex], ref velocity , 1f);
+            _camera.orthographicSize = Mathf.SmoothDamp(_camera.orthographicSize, scaleTargets[_scaleTargetIndex], ref _velocity , 1f);
         }
     }
 

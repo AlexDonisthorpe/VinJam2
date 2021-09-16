@@ -17,6 +17,7 @@ public class Ghost : MonoBehaviour
 
     public void EnterHouse()
     {
+        targetHouse = null;
         GetComponent<Mover>().Stop();
         GetComponent<SpriteRenderer>().enabled = false;
         controllerRef.Deselect(gameObject);

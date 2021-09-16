@@ -6,6 +6,7 @@ using UnityEditor.SearchService;
 using UnityEditor.U2D;
 using UnityEngine;
 using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
 public class House : MonoBehaviour, IControllable
 {
@@ -20,8 +21,6 @@ public class House : MonoBehaviour, IControllable
     [SerializeField] private GameObject infoUICanvas;
     [SerializeField] private Sprite activeSprite;
     [SerializeField] private Sprite inactiveSprite;
-    
-    
     [SerializeField] private float _currentTimer = 0;
     private List<Ghost> _storedGhosts;
     private LevelController _levelController;
@@ -29,6 +28,9 @@ public class House : MonoBehaviour, IControllable
 
     private float maxGhostTimer = 0f;
     [SerializeField] private float currentGhostTimer = 0f;
+
+    [SerializeField] private float minOffset = 0f;
+    [SerializeField] private float maxOffset = 3f;
 
     private void OnEnable()
     {
@@ -59,7 +61,7 @@ public class House : MonoBehaviour, IControllable
     {
         if (currentGhostCounter == 0) return;
         
-        _storedGhosts[_storedGhosts.Count-1].LeaveHouse(ghostSpawn.position);
+        _storedGhosts[_storedGhosts.Count-1].LeaveHouse(OffSetHousePosition());
         _storedGhosts.RemoveAt(_storedGhosts.Count - 1);
         currentGhostCounter--;
         UpdateUI();
@@ -108,7 +110,7 @@ public class House : MonoBehaviour, IControllable
                 
                 foreach (Ghost ghost in _storedGhosts)
                 {
-                    ghost.LeaveHouse(ghostSpawn.position);
+                    ghost.LeaveHouse(OffSetHousePosition());
                     --currentGhostCounter;
                 }
 
@@ -126,7 +128,7 @@ public class House : MonoBehaviour, IControllable
 
             foreach (Ghost ghost in _storedGhosts)
             {
-                ghost.LeaveHouse(ghostSpawn.position);
+                ghost.LeaveHouse(OffSetHousePosition());
                 --currentGhostCounter;
             }
 
@@ -145,5 +147,14 @@ public class House : MonoBehaviour, IControllable
     {
         isEnabled = true;
         _childSpriteRenderer.sprite = activeSprite;
+    }
+
+    private Vector2 OffSetHousePosition()
+    {
+        float xOffset = Random.Range(minOffset, maxOffset);
+        float yOffset = Random.Range(minOffset, maxOffset);
+
+        var position = ghostSpawn.position;
+        return new Vector2(position.x + xOffset, position.y + yOffset);
     }
 }

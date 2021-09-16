@@ -216,6 +216,8 @@ MonoBehaviour:
   inactiveSprite: {fileID: 21300000, guid: 5331db01c4b07cd4caf1228cb8af9442, type: 3}
   _currentTimer: 0
   currentGhostTimer: 0
+  minOffset: 0
+  maxOffset: 1
 --- !u!61 &48007099064068555
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -287,7 +289,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 48007099189798159}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.449, y: -0.038, z: 0}
+  m_LocalPosition: {x: 0, y: -0.473, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 48007099064068553}

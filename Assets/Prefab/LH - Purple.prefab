@@ -216,6 +216,8 @@ MonoBehaviour:
   inactiveSprite: {fileID: 21300000, guid: ee3735bd29fffd349b923fc645794669, type: 3}
   _currentTimer: 0
   currentGhostTimer: 0
+  minOffset: 0
+  maxOffset: 0.5
 --- !u!61 &48007099064068555
 BoxCollider2D:
   m_ObjectHideFlags: 0

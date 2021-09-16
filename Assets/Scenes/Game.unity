@@ -4797,6 +4797,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ghost
       objectReference: {fileID: 0}
+    - target: {fileID: 8443691246614493159, guid: 4e6385095cb5277409252742708b8a41, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e6385095cb5277409252742708b8a41, type: 3}
 --- !u!1001 &9081428158828420396

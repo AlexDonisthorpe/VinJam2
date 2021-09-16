@@ -4163,6 +4163,77 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ba3b56d1c84c0d498fc6a8060bca4cd, type: 3}
+--- !u!1 &10535096299126979 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 10535095457032768, guid: 0ba3b56d1c84c0d498fc6a8060bca4cd, type: 3}
+  m_PrefabInstance: {fileID: 10535096299126978}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &10535096299126980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 10535096299126979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d9affb2aac252f43805ce663414c140, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _checkins:
+  - {fileID: 11400000, guid: 28242fd50ddd194479b73b9b4ad93b68, type: 2}
+  - {fileID: 11400000, guid: e98f6746bef898145b1de81bbaebee1f, type: 2}
+  - {fileID: 11400000, guid: 84f35450256cc1d46b5fc1df579fc454, type: 2}
+  - {fileID: 11400000, guid: 98925b44ce2fc6444a3bc47b9a93a8de, type: 2}
+--- !u!114 &10535096299126981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 10535096299126979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Events:
+    m_Signals:
+    - {fileID: 11400000, guid: 393f3734480eb334287f93d5dbbb9e5e, type: 2}
+    m_Events:
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 10535096299126980}
+          m_TargetAssemblyTypeName: DialogueController, Assembly-CSharp
+          m_MethodName: BossCheckin
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!320 &10535096299126982
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 10535096299126979}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 11400000, guid: 07ca2970afd60ca4e9abf6d1c1d22d99, type: 2}
+  m_InitialState: 0
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings:
+  - key: {fileID: -1571722243021907361, guid: 07ca2970afd60ca4e9abf6d1c1d22d99, type: 2}
+    value: {fileID: 10535096299126979}
+  m_ExposedReferences:
+    m_References: []
 --- !u!1001 &532052838220964181
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -5,17 +5,16 @@ using UnityEngine;
 
 public class LevelController : MonoBehaviour
 {
-    public int currentScore = 0;
+    public int currentGhosts = 0;
+    public int totalHauntings = 0;
 
-    public void updateScore(int points)
+    public void UpdateCurrentGhosts()
     {
-        points = Mathf.Clamp(points, 0, Int32.MaxValue);
-        currentScore += points;
-        Debug.Log("Score:" + currentScore);
+        currentGhosts += 1;
     }
 
-    public int getScore()
+    public void UpdateTotalHauntings()
     {
-        return currentScore;
+        totalHauntings += 1;
     }
 }

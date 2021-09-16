@@ -18,23 +18,24 @@ public class House : MonoBehaviour, IControllable
     [SerializeField] private int currentGhostCounter = 0;
     [SerializeField] private Transform ghostSpawn;
     [SerializeField] private GameObject infoUICanvas;
-    [SerializeField] private static float tickRate = 3.0f;
     [SerializeField] private Sprite activeSprite;
     [SerializeField] private Sprite inactiveSprite;
     
     
-    
-    private float _currentCounter = 0;
-    private int pointsPerTick = 1;
+    [SerializeField] private float _currentTimer = 0;
     private List<Ghost> _storedGhosts;
     private LevelController _levelController;
     private SpriteRenderer _childSpriteRenderer;
+
+    private float maxGhostTimer = 0f;
+    [SerializeField] private float currentGhostTimer = 0f;
 
     private void OnEnable()
     {
         _childSpriteRenderer = GetComponentInChildren<SpriteRenderer>();
         _storedGhosts = new List<Ghost>();
         _levelController = FindObjectOfType<LevelController>();
+        maxGhostTimer = hauntingTimer / 2;
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -83,14 +84,53 @@ public class House : MonoBehaviour, IControllable
 
     private void Update()
     {
-        if (currentGhostCounter == 0 || !isEnabled) return;
+        if (!isEnabled) return;
         
-        _currentCounter += Time.deltaTime;
+        float counterMultiplier = Mathf.Clamp(currentGhostCounter, 1f, 3f);
+        _currentTimer += Time.deltaTime * counterMultiplier;
+        
+        if (currentGhostCounter > 0) currentGhostTimer += Time.deltaTime * counterMultiplier;
+        
+        if (_currentTimer >= hauntingTimer)
+        {
+            isEnabled = false;
+            _currentTimer = 0;
+            
+            GetComponentInParent<HouseController>().DecreaseActiveHouses();
+            _childSpriteRenderer.sprite = inactiveSprite;
+            
+            if (currentGhostTimer < maxGhostTimer)
+            {
+                currentGhostTimer = 0;
+                
+                foreach (Ghost ghost in _storedGhosts)
+                {
+                    ghost.LeaveHouse(ghostSpawn.position);
+                    --currentGhostCounter;
+                }
 
-        if (!(_currentCounter >= tickRate)) return;
+                _storedGhosts.Clear();
+                
+                return;
+            }
+            
+            currentGhostTimer = 0;
+            
+            if (currentGhostCounter == 0) return;
+            
+            Instantiate(ghostPrefab, ghostSpawn.position, Quaternion.identity, transform.parent);
+            _levelController.UpdateTotalHauntings();
+
+            foreach (Ghost ghost in _storedGhosts)
+            {
+                ghost.LeaveHouse(ghostSpawn.position);
+                --currentGhostCounter;
+            }
+
+            _storedGhosts.Clear();
+            UpdateUI();
+        }
         
-        _currentCounter = 0;
-        _levelController.updateScore(pointsPerTick * currentGhostCounter);
     }
 
     public bool GetEnabled()
@@ -100,29 +140,7 @@ public class House : MonoBehaviour, IControllable
 
     public void SetEnabled()
     {
-        StartCoroutine(Haunting());
-    }
-
-    private IEnumerator Haunting()
-    {
         isEnabled = true;
         _childSpriteRenderer.sprite = activeSprite;
-        
-        yield return new WaitForSeconds(hauntingTimer);
-        isEnabled = false;
-        
-        if(_storedGhosts.Count > 0) Instantiate(ghostPrefab, ghostSpawn.position, Quaternion.identity, transform.parent);
-
-        foreach (Ghost ghost in _storedGhosts) 
-        {
-            ghost.LeaveHouse(ghostSpawn.position);
-            --currentGhostCounter;
-        }
-        _storedGhosts.Clear();
-        
-        GetComponentInParent<HouseController>().DecreaseActiveHouses();
-        _childSpriteRenderer.sprite = inactiveSprite;
-
-        UpdateUI();
     }
 }

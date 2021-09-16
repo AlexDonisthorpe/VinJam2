@@ -11,6 +11,7 @@ public class Ghost : MonoBehaviour
     void Start()
     {
         controllerRef = FindObjectOfType<Controller>();
+        FindObjectOfType<LevelController>().UpdateCurrentGhosts();
     }
 
     public void EnterHouse()

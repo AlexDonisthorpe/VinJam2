@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 using Pathfinding;
+using UnityEngine.Playables;
 
 public class LevelTimer : MonoBehaviour
 {
@@ -30,6 +31,7 @@ public class LevelTimer : MonoBehaviour
         levelTimer = levelDurationInSeconds;
         _timer = true;
         FindObjectOfType<Controller>().StartGame();
+        GetComponent<PlayableDirector>().Play();
     }
 
     // Update is called once per frame

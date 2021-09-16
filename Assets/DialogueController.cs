@@ -9,6 +9,7 @@ public class DialogueController : MonoBehaviour
     
     public void BossCheckin()
     {
+        Debug.Log("BossCheckingIn");
         String messageToSend;
         
         if (FindObjectOfType<LevelController>().totalHauntings < _checkins[checkinCounter].successHousesHaunted)
@@ -22,6 +23,15 @@ public class DialogueController : MonoBehaviour
         }
         
         FindObjectOfType<BossChatController>().ShowMessage(messageToSend);
+        if (checkinCounter == 4)
+        {
+            Invoke(nameof(EndGame), 5f);
+        }
         checkinCounter++;
+    }
+
+    private void EndGame()
+    {
+        FindObjectOfType<LevelController>().EndGame(true);
     }
 }

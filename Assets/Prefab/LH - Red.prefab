@@ -217,7 +217,7 @@ MonoBehaviour:
   _currentTimer: 0
   currentGhostTimer: 0
   minOffset: 0
-  maxOffset: 3
+  maxOffset: 0.2
 --- !u!61 &48007099064068555
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -5,7 +5,6 @@ using UnityEngine;
 public class HouseController : MonoBehaviour
 {
     [SerializeField] private int maxActiveHouses = 1;
-
     [SerializeField] int _currentActiveHouses = 0;
     private List<House> _houses = new List<House>();
 
@@ -15,6 +14,8 @@ public class HouseController : MonoBehaviour
     [SerializeField] private House[] _secondSetOfHouses;
     [SerializeField] private House[] _thirdSetOfHouses;
     [SerializeField] private House[] _fourthSetOfHouses;
+
+    private bool gameStarted = false;
     
     
     // Start is called before the first frame update
@@ -30,7 +31,7 @@ public class HouseController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_currentActiveHouses < maxActiveHouses)
+        if (gameStarted && _currentActiveHouses < maxActiveHouses )
         {
             GetRandomHouse().SetEnabled();
             _currentActiveHouses++;
@@ -87,5 +88,10 @@ public class HouseController : MonoBehaviour
             house.gameObject.SetActive(true);
             _houses.Add(house);
         }
+    }
+
+    public void StartHousing()
+    {
+        gameStarted = true;
     }
 }

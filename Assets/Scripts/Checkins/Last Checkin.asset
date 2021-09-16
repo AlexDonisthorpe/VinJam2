@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d79e4fdcbe8bc704cb481574d669b570, type: 3}
-  m_Name: Third Checkin
+  m_Name: Last Checkin
   m_EditorClassIdentifier: 
-  successText: "Third Checkin Success\t"
-  failText: Third Checkin Fail
+  successText: Last Checkin Fail
+  failText: Last Checkin Fail
   successHousesHaunted: 1

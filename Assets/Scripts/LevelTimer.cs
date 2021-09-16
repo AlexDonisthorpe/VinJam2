@@ -31,6 +31,7 @@ public class LevelTimer : MonoBehaviour
         levelTimer = levelDurationInSeconds;
         _timer = true;
         FindObjectOfType<Controller>().StartGame();
+        FindObjectOfType<HouseController>().StartHousing();
         GetComponent<PlayableDirector>().Play();
     }
 

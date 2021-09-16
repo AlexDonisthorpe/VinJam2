@@ -17,7 +17,7 @@ public class StartScreen : MonoBehaviour
             {
                 countdownStarted = true;
                 GetComponent<Animator>().SetTrigger(StartTimer);
-                UpdateText("5");
+                UpdateText("3");
             }
         }
     }

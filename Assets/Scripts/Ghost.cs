@@ -6,6 +6,7 @@ public class Ghost : MonoBehaviour
 {
     private Controller controllerRef;
     private static readonly int Selected = Animator.StringToHash("Selected");
+    private House targetHouse;
 
     // Start is called before the first frame update
     void Start()
@@ -27,11 +28,6 @@ public class Ghost : MonoBehaviour
         GetComponent<SpriteRenderer>().enabled = true;
     }
 
-    public void ChangeColor(Color color)
-    {
-        GetComponent<SpriteRenderer>().color = color;
-    }
-
     public void Select()
     {
         GetComponent<Animator>().SetBool(Selected, true);
@@ -40,5 +36,15 @@ public class Ghost : MonoBehaviour
     public void Unselect()
     {
         GetComponent<Animator>().SetBool(Selected, false);
+    }
+
+    public void SetTargetHouse(House house)
+    {
+        targetHouse = house;
+    }
+
+    public House GetTargetHouse()
+    {
+        return targetHouse;
     }
 }

@@ -35,6 +35,23 @@ public class Controller : MonoBehaviour
         if (Input.GetMouseButtonDown(1))
         {
             if (!selectedObject) return;
+            
+            if (selectedObject.GetComponent<Ghost>())
+            {
+                RaycastHit2D hitData = CheckForControllers();
+                
+                if (hitData)
+                {
+                    House targetHouse = hitData.transform.gameObject.GetComponent<House>();
+                    selectedObject.GetComponent<Ghost>().SetTargetHouse(targetHouse);
+                }
+                else
+                {
+                    selectedObject.GetComponent<Ghost>().SetTargetHouse(null);
+                }
+
+            }
+
             selectedObject.GetComponent<IControllable>().HandleRightClick();
         }
 
@@ -79,5 +96,4 @@ public class Controller : MonoBehaviour
     {
         hasStarted = true;
     }
-
 }

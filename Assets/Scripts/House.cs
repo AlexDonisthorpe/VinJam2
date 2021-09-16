@@ -44,12 +44,15 @@ public class House : MonoBehaviour, IControllable
 
         Ghost ghost = other.gameObject.GetComponent<Ghost>();
         if (!ghost) return;
+
+        if (ghost.GetTargetHouse() == this)
+        {
+            ghost.EnterHouse();
         
-        ghost.EnterHouse();
-        
-        _storedGhosts.Add(ghost);
-        currentGhostCounter++;
-        UpdateUI();
+            _storedGhosts.Add(ghost);
+            currentGhostCounter++;
+            UpdateUI();
+        }
     }
 
     public void HandleRightClick()

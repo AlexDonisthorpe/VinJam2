@@ -3477,6 +3477,13 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 578af048ba51a9e47a17279d4e9bf645, type: 2}
   - {fileID: 11400000, guid: 98925b44ce2fc6444a3bc47b9a93a8de, type: 2}
   - {fileID: 11400000, guid: 84f35450256cc1d46b5fc1df579fc454, type: 2}
+  bossMessages:
+  - Ah, just in time! The night is almost over and I need you to get these ghosts
+    into all of these dark houses so we can collect as many scares as possible before
+    the night is over.
+  - "I\u2019ll be checking in periodically to make sure you all aren\u2019t slacking
+    off but I\u2019m sure this\u2019ll be easy for a veteran like you though."
+  playerMessages: []
 --- !u!114 &10535096299126981
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3492,6 +3499,8 @@ MonoBehaviour:
   m_Events:
     m_Signals:
     - {fileID: 11400000, guid: 393f3734480eb334287f93d5dbbb9e5e, type: 2}
+    - {fileID: 11400000, guid: 956d4ae98cde5974f97a25d555c19d90, type: 2}
+    - {fileID: 11400000, guid: e71c937425a81f046b8697da308ffd3c, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
@@ -3505,6 +3514,34 @@ MonoBehaviour:
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 10535096299126980}
+          m_TargetAssemblyTypeName: DialogueController, Assembly-CSharp
+          m_MethodName: PlayerChat
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 10535096299126980}
+          m_TargetAssemblyTypeName: DialogueController, Assembly-CSharp
+          m_MethodName: BossChat
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: test
             m_BoolArgument: 0
           m_CallState: 2
 --- !u!320 &10535096299126982
@@ -3652,7 +3689,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 532052837029643215, guid: d51e2083016c3a14eb0c3bac168a8a5b, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 1200
+      value: 960.64
       objectReference: {fileID: 0}
     - target: {fileID: 532052837029643215, guid: d51e2083016c3a14eb0c3bac168a8a5b, type: 3}
       propertyPath: m_SizeDelta.y
@@ -3660,7 +3697,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 532052837029643215, guid: d51e2083016c3a14eb0c3bac168a8a5b, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 1566
+      value: 1446.32
       objectReference: {fileID: 0}
     - target: {fileID: 532052837029643215, guid: d51e2083016c3a14eb0c3bac168a8a5b, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -3971,7 +4008,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8175695113158463965, guid: 4baebf7550b99084daeb7cc5d13f7f0e, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 1200
+      value: 960.82
       objectReference: {fileID: 0}
     - target: {fileID: 8175695113158463965, guid: 4baebf7550b99084daeb7cc5d13f7f0e, type: 3}
       propertyPath: m_SizeDelta.y
@@ -3979,7 +4016,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8175695113158463965, guid: 4baebf7550b99084daeb7cc5d13f7f0e, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -1568
+      value: -1448.41
       objectReference: {fileID: 0}
     - target: {fileID: 8175695113158463965, guid: 4baebf7550b99084daeb7cc5d13f7f0e, type: 3}
       propertyPath: m_AnchoredPosition.y

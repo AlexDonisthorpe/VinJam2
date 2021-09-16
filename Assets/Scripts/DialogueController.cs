@@ -4,12 +4,14 @@ using UnityEngine;
 public class DialogueController : MonoBehaviour
 {
     [SerializeField] private Checkin[] _checkins;
-    private static int checkinCounter = 0;
-
+    [TextArea] [SerializeField] private String[] bossMessages;
+    [TextArea] [SerializeField] private String[] playerMessages;
     
+    private static int checkinCounter = 0;
+    private static int bossMessageCounter = 0;
+    private static int playerMessageCounter = 0;
     public void BossCheckin()
     {
-        Debug.Log("BossCheckingIn");
         String messageToSend;
         
         if (FindObjectOfType<LevelController>().totalHauntings < _checkins[checkinCounter].successHousesHaunted)
@@ -28,6 +30,18 @@ public class DialogueController : MonoBehaviour
             Invoke(nameof(EndGame), 5f);
         }
         checkinCounter++;
+    }
+
+    public void BossChat()
+    {
+        FindObjectOfType<BossChatController>().ShowMessage(bossMessages[bossMessageCounter]);
+        bossMessageCounter++;
+    }
+
+    public void PlayerChat()
+    {
+        FindObjectOfType<PlayerChatController>().ShowMessage(playerMessages[playerMessageCounter]);
+        playerMessageCounter++;
     }
 
     private void EndGame()

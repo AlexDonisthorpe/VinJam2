@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Controller : MonoBehaviour
@@ -12,6 +9,26 @@ public class Controller : MonoBehaviour
     void Update()
     {
         if(!hasStarted) return;
+        
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (isPaused)
+            {
+                FindObjectOfType<PauseMenu>().Continue();
+                isPaused = false;
+            }
+            else if (selectedObject == null)
+            {
+                FindObjectOfType<PauseMenu>().Pause();
+                isPaused = true;
+            }
+            else
+            {
+                Deselect(selectedObject);
+            }
+        }
+
+        if (isPaused) return;
         
         if (Input.GetMouseButtonDown(0))
         {
@@ -55,29 +72,13 @@ public class Controller : MonoBehaviour
             selectedObject.GetComponent<IControllable>().HandleRightClick();
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            if (isPaused)
-            {
-                FindObjectOfType<PauseMenu>().Continue();
-                isPaused = false;
-            }
-            else if (selectedObject == null)
-            {
-                FindObjectOfType<PauseMenu>().Pause();
-                isPaused = true;
-            }
-            else
-            {
-                Deselect(selectedObject);
-            }
-        }
+
     }
 
-    public void Deselect(GameObject gameObject)
+    public void Deselect(GameObject objectCallingDeselect)
     {
         if (!selectedObject) return;
-        if (gameObject != selectedObject) return;
+        if (objectCallingDeselect != selectedObject) return;
         
         selectedObject.GetComponent<IControllable>().HandleDeselect();
         selectedObject = null;

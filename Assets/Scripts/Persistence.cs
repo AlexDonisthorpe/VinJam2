@@ -1,6 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+
+// Singleton Script for the persistant object script
+// (Used as a parent for other persistant objects)
 
 public class Persistence : MonoBehaviour
 {

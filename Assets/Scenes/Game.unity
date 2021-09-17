@@ -3483,7 +3483,8 @@ MonoBehaviour:
     the night is over.
   - "I\u2019ll be checking in periodically to make sure you all aren\u2019t slacking
     off but I\u2019m sure this\u2019ll be easy for a veteran like you though."
-  playerMessages: []
+  playerMessages:
+  - BoooooooOOoooOo!!!!
 --- !u!114 &10535096299126981
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3503,6 +3504,8 @@ MonoBehaviour:
     - {fileID: 11400000, guid: e71c937425a81f046b8697da308ffd3c, type: 2}
     - {fileID: 11400000, guid: a035d43238575b944ac2664e1a661a96, type: 2}
     - {fileID: 11400000, guid: 4ffa5b7d7331ada478e23b7795071967, type: 2}
+    - {fileID: 11400000, guid: 5dac36b12f047fa468f9ce8c7c01c414, type: 2}
+    - {fileID: 11400000, guid: eeffa588dd1e1864885a677c5c86021f, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
@@ -3565,6 +3568,34 @@ MonoBehaviour:
         - m_Target: {fileID: 10535096299126980}
           m_TargetAssemblyTypeName: DialogueController, Assembly-CSharp
           m_MethodName: ToggleBossChat
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 10535096299126980}
+          m_TargetAssemblyTypeName: DialogueController, Assembly-CSharp
+          m_MethodName: TogglePlayerPortrait
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 10535096299126980}
+          m_TargetAssemblyTypeName: DialogueController, Assembly-CSharp
+          m_MethodName: TogglePlayerChat
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -4072,6 +4103,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerText
       objectReference: {fileID: 0}
+    - target: {fileID: 8175695113417246987, guid: 4baebf7550b99084daeb7cc5d13f7f0e, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: d6ce8a1e98019824b95d78378f11a6a9, type: 2}
     - target: {fileID: 8175695113417246996, guid: 4baebf7550b99084daeb7cc5d13f7f0e, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -4184,6 +4219,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 125.69
       objectReference: {fileID: 0}
+    - target: {fileID: 8175695113685304565, guid: 4baebf7550b99084daeb7cc5d13f7f0e, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8175695113685304565, guid: 4baebf7550b99084daeb7cc5d13f7f0e, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8175695115180748372, guid: 4baebf7550b99084daeb7cc5d13f7f0e, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0.5
@@ -4210,7 +4253,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8175695115180748372, guid: 4baebf7550b99084daeb7cc5d13f7f0e, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -2046
+      value: -1093
       objectReference: {fileID: 0}
     - target: {fileID: 8175695115180748372, guid: 4baebf7550b99084daeb7cc5d13f7f0e, type: 3}
       propertyPath: m_AnchoredPosition.y

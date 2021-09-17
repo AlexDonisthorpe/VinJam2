@@ -97,4 +97,9 @@ public class Controller : MonoBehaviour
     {
         hasStarted = true;
     }
+
+    public void Unpause()
+    {
+        isPaused = false;
+    }
 }

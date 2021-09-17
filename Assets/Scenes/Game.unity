@@ -3501,6 +3501,8 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 393f3734480eb334287f93d5dbbb9e5e, type: 2}
     - {fileID: 11400000, guid: 956d4ae98cde5974f97a25d555c19d90, type: 2}
     - {fileID: 11400000, guid: e71c937425a81f046b8697da308ffd3c, type: 2}
+    - {fileID: 11400000, guid: a035d43238575b944ac2664e1a661a96, type: 2}
+    - {fileID: 11400000, guid: 4ffa5b7d7331ada478e23b7795071967, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
@@ -3542,6 +3544,34 @@ MonoBehaviour:
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: test
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 10535096299126980}
+          m_TargetAssemblyTypeName: DialogueController, Assembly-CSharp
+          m_MethodName: ToggleBossPortrait
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 10535096299126980}
+          m_TargetAssemblyTypeName: DialogueController, Assembly-CSharp
+          m_MethodName: ToggleBossChat
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
 --- !u!320 &10535096299126982
@@ -3701,7 +3731,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 532052837029643215, guid: d51e2083016c3a14eb0c3bac168a8a5b, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -487.99994
+      value: -482
       objectReference: {fileID: 0}
     - target: {fileID: 532052837732640872, guid: d51e2083016c3a14eb0c3bac168a8a5b, type: 3}
       propertyPath: m_Camera
@@ -3722,6 +3752,10 @@ PrefabInstance:
     - target: {fileID: 532052837732640873, guid: d51e2083016c3a14eb0c3bac168a8a5b, type: 3}
       propertyPath: m_ReferenceResolution.y
       value: 1080
+      objectReference: {fileID: 0}
+    - target: {fileID: 532052837732640874, guid: d51e2083016c3a14eb0c3bac168a8a5b, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 532052837732640875, guid: d51e2083016c3a14eb0c3bac168a8a5b, type: 3}
       propertyPath: m_Pivot.x
@@ -3837,15 +3871,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 532052838501371606, guid: d51e2083016c3a14eb0c3bac168a8a5b, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 2044
+      value: 1090
       objectReference: {fileID: 0}
     - target: {fileID: 532052838501371606, guid: d51e2083016c3a14eb0c3bac168a8a5b, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -395
+      value: -389
+      objectReference: {fileID: 0}
+    - target: {fileID: 532052838501371607, guid: d51e2083016c3a14eb0c3bac168a8a5b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 532052838812150856, guid: d51e2083016c3a14eb0c3bac168a8a5b, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 1526726655
+      objectReference: {fileID: 0}
+    - target: {fileID: 532052838812150857, guid: d51e2083016c3a14eb0c3bac168a8a5b, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -22.77
       objectReference: {fileID: 0}
     - target: {fileID: 532052838812150857, guid: d51e2083016c3a14eb0c3bac168a8a5b, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -85.839966
+      value: 2.8948975
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d51e2083016c3a14eb0c3bac168a8a5b, type: 3}

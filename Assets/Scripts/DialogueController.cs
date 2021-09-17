@@ -10,6 +10,16 @@ public class DialogueController : MonoBehaviour
     private static int checkinCounter = 0;
     private static int bossMessageCounter = 0;
     private static int playerMessageCounter = 0;
+
+    private BossChatController _bossChatController;
+    private PlayerChatController _playerChatController;
+
+    private void Start()
+    {
+        _bossChatController = FindObjectOfType<BossChatController>();
+        _playerChatController = FindObjectOfType<PlayerChatController>();
+    }
+
     public void BossCheckin()
     {
         String messageToSend;
@@ -24,7 +34,7 @@ public class DialogueController : MonoBehaviour
             messageToSend = _checkins[checkinCounter].successText;
         }
         
-        FindObjectOfType<BossChatController>().ShowMessage(messageToSend);
+        _bossChatController.ShowMessage(messageToSend);
         if (checkinCounter == 4)
         {
             Invoke(nameof(EndGame), 5f);
@@ -32,9 +42,19 @@ public class DialogueController : MonoBehaviour
         checkinCounter++;
     }
 
+    public void ToggleBossPortrait()
+    {
+        _bossChatController.TogglePortrait();
+    }
+
+    public void ToggleBossChat()
+    {
+        _bossChatController.ToggleTextBar();
+    }
+    
     public void BossChat()
     {
-        FindObjectOfType<BossChatController>().ShowMessage(bossMessages[bossMessageCounter]);
+        _bossChatController.ShowMessage(bossMessages[bossMessageCounter]);
         bossMessageCounter++;
     }
 

@@ -81,14 +81,12 @@ public class House : MonoBehaviour, IControllable
 
     public void HandleDeselect()
     {
-        UpdateUI();
-        infoUICanvas.SetActive(false);
+        return;
     }
 
     public void HandleSelected()
     {
-        UpdateUI();
-        infoUICanvas.SetActive(true);
+        return;
     }
 
     private void UpdateUI()
@@ -97,6 +95,11 @@ public class House : MonoBehaviour, IControllable
 
         String details = $"{currentGhostCounter} / {maxGhosts}";
         infoUICanvas.GetComponentInChildren<TextMeshProUGUI>().text = details;
+    }
+
+    public String GetGhostsString()
+    {
+        return $"{currentGhostCounter} / {maxGhosts}";
     }
 
     private void Update()

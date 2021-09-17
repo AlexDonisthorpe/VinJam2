@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Controller : MonoBehaviour
@@ -5,6 +6,12 @@ public class Controller : MonoBehaviour
     private GameObject selectedObject;
     private bool isPaused = false;
     private bool hasStarted = false;
+    private LevelController _levelController;
+
+    private void Start()
+    {
+        _levelController = FindObjectOfType<LevelController>();
+    }
 
     void Update()
     {
@@ -30,11 +37,10 @@ public class Controller : MonoBehaviour
 
         if (isPaused) return;
         
+        RaycastHit2D hitData = CheckForControllers();
+        
         if (Input.GetMouseButtonDown(0))
         {
-            
-            RaycastHit2D hitData = CheckForControllers();
-
             if (hitData)
             {
                 // Deselect the current selected Object
@@ -55,7 +61,6 @@ public class Controller : MonoBehaviour
             
             if (selectedObject.GetComponent<Ghost>())
             {
-                RaycastHit2D hitData = CheckForControllers();
                 
                 if (hitData)
                 {
@@ -70,6 +75,26 @@ public class Controller : MonoBehaviour
             }
 
             selectedObject.GetComponent<IControllable>().HandleRightClick();
+        }
+
+        if (hitData)
+        {
+            House hoverHouse = hitData.transform.gameObject.GetComponent<House>();
+            if (hoverHouse)
+            {
+                if (hoverHouse.GetEnabled())
+                {
+                    _levelController.ShowHouseHover(hoverHouse.GetGhostsString());
+                }
+                else
+                {
+                    _levelController.HideHouseHover();
+                }
+            }
+        }
+        else
+        {
+            _levelController.HideHouseHover();
         }
 
 

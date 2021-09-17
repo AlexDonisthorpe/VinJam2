@@ -23,6 +23,7 @@ public class PauseMenu : MonoBehaviour
     public void Continue()
     {
         pauseMenu.GetComponent<Animator>().SetTrigger(ClosePause);
+        FindObjectOfType<Controller>().Unpause();
         StartCoroutine(DisablePauseMenu());
     }
 

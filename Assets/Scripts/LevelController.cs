@@ -63,7 +63,7 @@ public class LevelController : MonoBehaviour
         }
         else
         {
-            LoseUI.SetActive(false);
+            LoseUI.SetActive(true);
         }
     }
 

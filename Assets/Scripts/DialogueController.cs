@@ -58,6 +58,16 @@ public class DialogueController : MonoBehaviour
         bossMessageCounter++;
     }
 
+    public void TogglePlayerPortrait()
+    {
+        _playerChatController.TogglePortrait();
+    }
+
+    public void TogglePlayerChat()
+    {
+        _playerChatController.ToggleTextBar();
+    }
+    
     public void PlayerChat()
     {
         FindObjectOfType<PlayerChatController>().ShowMessage(playerMessages[playerMessageCounter]);

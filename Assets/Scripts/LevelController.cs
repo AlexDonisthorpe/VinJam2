@@ -9,7 +9,7 @@ public class LevelController : MonoBehaviour
     [SerializeField] private GameObject LoseUI;
     [SerializeField] private GameObject winLoseUI;
     [SerializeField] private GameObject HouseHoverUI;
-    [SerializeField] private TextMeshProUGUI winGhostsNoField;
+    [SerializeField] private TextMeshProUGUI GhostsNoField;
     [SerializeField] private TextMeshProUGUI ghostCounterText;
     [SerializeField] private Image[] ChanceImages;
     [SerializeField] private Vector2 mouseOffset = new Vector2(-20, 0);
@@ -69,11 +69,12 @@ public class LevelController : MonoBehaviour
         
         if (wonGame)
         {
+            GhostsNoField.text = currentGhosts.ToString();
             winUI.SetActive(true);
-            winGhostsNoField.text = currentGhosts.ToString();
         }
         else
         {
+            GhostsNoField.text = currentGhosts.ToString();
             LoseUI.SetActive(true);
         }
     }

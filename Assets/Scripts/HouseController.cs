@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class HouseController : MonoBehaviour
 {
+    [SerializeField] private int[] maxActiveHousesPerLevel = new int[4]{2, 3, 5, 7};
+    
     [SerializeField] private int maxActiveHouses = 1;
     [SerializeField] int _currentActiveHouses = 0;
     private List<House> _houses = new List<House>();
@@ -63,21 +65,19 @@ public class HouseController : MonoBehaviour
         {
             case 1:
                 AddNewSetOfHouses(ref _firstSetOfHouses);
-                maxActiveHouses += 1;
                 break;
             case 2:
                 AddNewSetOfHouses(ref _secondSetOfHouses);
-                maxActiveHouses += 1;
                 break;
             case 3:
                 AddNewSetOfHouses(ref _thirdSetOfHouses);
-                maxActiveHouses += 2;
                 break;
             case 4:
                 AddNewSetOfHouses(ref _fourthSetOfHouses);
-                maxActiveHouses += 2;
                 break;
         }
+
+        maxActiveHouses = maxActiveHousesPerLevel[currentSet-1];
     }
     
     private void AddNewSetOfHouses(ref House[] newSet)

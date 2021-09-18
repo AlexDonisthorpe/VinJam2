@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d79e4fdcbe8bc704cb481574d669b570, type: 3}
   m_Name: Fourth Checkin
   m_EditorClassIdentifier: 
-  successText: "Fourth Checkin Success\t"
-  failText: Fourth Checkin Fail
+  successText: "Alright old timer, we\u2019re nearly at the end of the night. I\u2019ll
+    be back later to see how you\u2019ve done, remember though, any slacking and
+    no retirement for you. So you better get to it!"
+  failText: "I knew it! I knew you were a slacker! Well, I don\u2019t care how many
+    years you\u2019ve worked, you now work for me, for all eternity with no chance
+    of retirement!"
   successHousesHaunted: 27

@@ -12,6 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d79e4fdcbe8bc704cb481574d669b570, type: 3}
   m_Name: Last Checkin
   m_EditorClassIdentifier: 
-  successText: Last Checkin Fail
-  failText: Last Checkin Fail
+  successText: "So you made it the whole night without slacking. I guess you are
+    as good as they say. Well don\u2019t just stand there, get out of my site before
+    I find you more work to do!"
+  failText: "So, you really don\u2019t want to retire I see. It doesn\u2019t matter
+    how many years you\u2019ve been working because it wasn\u2019t enough! I\u2019ll
+    just have to keep you for the rest of eternity now. Fix yourself up because I
+    have another job for you!"
   successHousesHaunted: 38

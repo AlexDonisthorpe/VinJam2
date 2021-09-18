@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,17 +8,27 @@ public class LevelController : MonoBehaviour
     [SerializeField] private GameObject winUI;
     [SerializeField] private GameObject LoseUI;
     [SerializeField] private GameObject winLoseUI;
-    [SerializeField] private TextMeshProUGUI winGhostsNoField;
+    [SerializeField] private GameObject HouseHoverUI;
+    [SerializeField] private TextMeshProUGUI GhostsNoField;
     [SerializeField] private TextMeshProUGUI ghostCounterText;
     [SerializeField] private Image[] ChanceImages;
-    
+    [SerializeField] private Vector2 mouseOffset = new Vector2(-20, 0);
+
     public int currentGhosts = 0;
     public int totalHauntings = 0;
     public int remainingChances = 3;
 
+    private RectTransform _hoverRect;
+    private bool hoverActive = false;
+
     private void Awake()
     {
         Time.timeScale = 1;
+    }
+
+    private void Start()
+    {
+        _hoverRect = HouseHoverUI.GetComponent<RectTransform>();
     }
 
     public void UpdateCurrentGhosts()
@@ -58,11 +69,12 @@ public class LevelController : MonoBehaviour
         
         if (wonGame)
         {
+            GhostsNoField.text = currentGhosts.ToString();
             winUI.SetActive(true);
-            winGhostsNoField.text = currentGhosts.ToString();
         }
         else
         {
+            GhostsNoField.text = currentGhosts.ToString();
             LoseUI.SetActive(true);
         }
     }
@@ -82,5 +94,28 @@ public class LevelController : MonoBehaviour
     {
         Time.timeScale = 1;
         FindObjectOfType<SceneController>().LoadScene(0);
+    }
+
+    public void ShowHouseHover(String houseString)
+    {
+        if (!hoverActive)
+        {
+            HouseHoverUI.SetActive(true);
+            hoverActive = true;
+        }
+
+        HouseHoverUI.GetComponentInChildren<TextMeshProUGUI>().text = houseString;
+    }
+
+    public void HideHouseHover()
+    {
+        if (!hoverActive) return;
+        HouseHoverUI.SetActive(false);
+        hoverActive = false;
+    }
+
+    private void Update()
+    {
+        if(hoverActive) _hoverRect.anchoredPosition = (Vector2)Input.mousePosition + mouseOffset;
     }
 }

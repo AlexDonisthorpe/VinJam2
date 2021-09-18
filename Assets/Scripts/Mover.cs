@@ -1,7 +1,7 @@
 using UnityEngine;
 using Pathfinding;
 
-public class Mover : MonoBehaviour, IControllable
+public class Mover : MonoBehaviour
 {
     [SerializeField] float moveSpeed = 200f;
     [SerializeField] private float nextWaypointDistance = 3f;
@@ -29,37 +29,9 @@ public class Mover : MonoBehaviour, IControllable
         Move();
     }
 
-    public void HandleRightClick()
-    {
-        Vector3 screenPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 mousePos = new Vector2(screenPos.x, screenPos.y);
-        SetTargetLocation(mousePos);
-    }
-
-    public void HandleDeselect()
-    {
-        Ghost ghost = GetComponent<Ghost>();
-        
-        if (ghost)
-        {
-            ghost.Unselect();
-        }
-    }
-
-    public void HandleSelected()
-    {
-        Ghost ghost = GetComponent<Ghost>();
-        
-        if (ghost)
-        {
-            ghost.Select();
-        }
-    }
-
     public void SetTargetLocation(Vector2 newTarget)
     {
-        targetPosition = newTarget;
-        _seeker.StartPath(_rigidbody2D.position, targetPosition, OnPathComplete);
+        _seeker.StartPath(_rigidbody2D.position, newTarget, OnPathComplete);
     }
 
     private void OnPathComplete(Path p)
@@ -85,6 +57,7 @@ public class Mover : MonoBehaviour, IControllable
 
     public void Stop()
     {
+        _seeker.CancelCurrentPathRequest();
         path = null;
     }
 }

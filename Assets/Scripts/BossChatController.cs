@@ -14,11 +14,14 @@ public class BossChatController : MonoBehaviour
     
     private static readonly int TextIn = Animator.StringToHash("TextIn");
     private bool _btextIn = false;
-    
+
+    [SerializeField] private AudioClip BossDialogueSFX;
+    private AudioController _audioController;
 
     private void Start()
     {
         _animator = GetComponent<Animator>();
+        _audioController = FindObjectOfType<AudioController>();
     }
 
     public void TogglePortrait()
@@ -31,6 +34,8 @@ public class BossChatController : MonoBehaviour
     {
         _btextIn = !_btextIn;
         _animator.SetBool(TextIn, _btextIn);
+        if(_btextIn && BossDialogueSFX != null) _audioController.PlaySFX(ref BossDialogueSFX);
+
     }
 
     public void ShowMessage(string message)
@@ -43,5 +48,8 @@ public class BossChatController : MonoBehaviour
         _animator.SetTrigger(StartMessage);
         yield return new WaitForSeconds(1f);
         GetComponentInChildren<TextMeshProUGUI>().text = message;
+        
+        // So that it only plays if the textbox is active
+        if (_btextIn && BossDialogueSFX != null) _audioController.PlaySFX(ref BossDialogueSFX);
     }
 }

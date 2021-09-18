@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   successText: "Second Checkin Success\t"
   failText: Second Checkin Fail
-  successScore: 10
+  successHousesHaunted: 3

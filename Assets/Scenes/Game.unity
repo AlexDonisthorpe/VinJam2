@@ -6968,7 +6968,8 @@ MonoBehaviour:
   - "I\u2019ll be checking in periodically to make sure you all aren\u2019t slacking
     off but I\u2019m sure this\u2019ll be easy for a veteran like you though."
   playerMessages:
-  - BoooooooOOoooOo!!!!
+  - "Yes boss! So I click on the ghosts, click on the house to haunt, then wait until
+    the house is fully haunted, right? Boss\u2026? Hello..?"
 --- !u!114 &10535096299126981
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -10,6 +10,7 @@ public class PauseMenu : MonoBehaviour
 
     public void Pause()
     {
+        FindObjectOfType<AudioController>().TogglePauseMusic();
         pauseMenu.SetActive(true);
         Time.timeScale = 0;
     }
@@ -31,6 +32,7 @@ public class PauseMenu : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(1f);
         Time.timeScale = 1;
+        FindObjectOfType<AudioController>().TogglePauseMusic();
         pauseMenu.SetActive(false);
     }
 

@@ -6,29 +6,46 @@ using Random = UnityEngine.Random;
 
 public class PartyGhost : MonoBehaviour
 {
-    [SerializeField] private List<Transform> _destinations;
     [SerializeField] private float targetSwapRange = .5f;
 
     private Mover _mover;
     private Vector2 _targetDestination;
+    private bool partying = false;
+    private HouseController _houseController;
     private void Start()
     {
         _targetDestination = transform.position;
+        _houseController = FindObjectOfType<HouseController>();
         _mover = GetComponent<Mover>();
     }
 
     private void GetNewDestination()
     {
-        int destIndex = Random.Range(0, _destinations.Count - 1);
-        _targetDestination = _destinations[destIndex].position;
+        _targetDestination = _houseController.GetRandomHouse().transform.position;
         _mover.SetTargetLocation(_targetDestination);
     }
 
     private void Update()
     {
-        if (Vector2.Distance(transform.position, _targetDestination) < targetSwapRange)
+        if (partying) return;
+        if (Vector2.Distance((Vector2)transform.position, (Vector2)_targetDestination) < targetSwapRange)
         {
+            Debug.Log("Distance");
             GetNewDestination();
         }
+    }
+
+    public void Party()
+    {
+        StartCoroutine(StartParty());
+    }
+
+    IEnumerator StartParty()
+    {
+        partying = true;
+        _mover.SetTargetLocation(transform.position);
+        yield return new WaitForSeconds(10f);
+        partying = false;
+        GetNewDestination();
     }
 }

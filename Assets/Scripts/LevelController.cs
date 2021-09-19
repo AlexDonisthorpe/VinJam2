@@ -20,6 +20,7 @@ public class LevelController : MonoBehaviour
 
     private RectTransform _hoverRect;
     private bool hoverActive = false;
+    [SerializeField] private CanvasScaler _scaler;
 
     private void Awake()
     {
@@ -116,6 +117,6 @@ public class LevelController : MonoBehaviour
 
     private void Update()
     {
-        if(hoverActive) _hoverRect.anchoredPosition = (Vector2)Input.mousePosition + mouseOffset;
+        if(hoverActive) _hoverRect.anchoredPosition = new Vector2((Input.mousePosition.x + mouseOffset.x) * _scaler.referenceResolution.x / Screen.width, (Input.mousePosition.y +mouseOffset.y) * _scaler.referenceResolution.y / Screen.height);
     }
 }

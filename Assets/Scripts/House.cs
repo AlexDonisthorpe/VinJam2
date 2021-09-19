@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -12,6 +13,8 @@ public class House : MonoBehaviour, IControllable
     // Timer parameters for tracking the duration of the haunting
     [SerializeField] private float hauntingTimer = 10f;
     [SerializeField] private float _currentTimer = 0;
+
+    [SerializeField] private float partyTimer = 10f;
     
     // Timer parameters for tracking how long a ghost has been in the house
     // to track contribution
@@ -35,18 +38,25 @@ public class House : MonoBehaviour, IControllable
     [SerializeField] private GameObject infoUICanvas;
     [SerializeField] private Sprite activeSprite;
     [SerializeField] private Sprite inactiveSprite;
+    [SerializeField] private GameObject selectedUI;
+    [SerializeField] private Animator timerAnimator;
+    [SerializeField] private SpriteRenderer timerSpriteRenderer;
+    [SerializeField] private float animationSpeed;
     
     // List of ghosts in the house
     private List<Ghost> _storedGhosts;
     
     // Cached References
     private LevelController _levelController;
-    private SpriteRenderer _childSpriteRenderer;
+    [SerializeField] private SpriteRenderer houseSpriteRenderer;
     [SerializeField] private Transform ghostParent;
-    
+
+    private bool party = false;
+    private static readonly int AnimationSpeed = Animator.StringToHash("AnimationSpeed");
+    private static readonly int StartTimer = Animator.StringToHash("StartTimer");
+
     private void OnEnable()
     {
-        _childSpriteRenderer = GetComponentInChildren<SpriteRenderer>();
         _storedGhosts = new List<Ghost>();
         _levelController = FindObjectOfType<LevelController>();
         maxGhostTimer = hauntingTimer / 2;
@@ -54,6 +64,7 @@ public class House : MonoBehaviour, IControllable
 
     private void OnTriggerStay2D(Collider2D other)
     {
+        if (party) return;
         if (!isEnabled || currentGhostCounter == maxGhosts) return;
 
         Ghost ghost = other.gameObject.GetComponent<Ghost>();
@@ -65,8 +76,35 @@ public class House : MonoBehaviour, IControllable
         
             _storedGhosts.Add(ghost);
             currentGhostCounter++;
+            UpdateAnimationSpeed();
             UpdateUI();
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (party || !isEnabled || currentGhostCounter == 0) return;
+        if (other.GetComponent<PartyGhost>() != null)
+        {
+            other.GetComponent<PartyGhost>().Party();
+            StartParty();
+        }
+    }
+
+    public void StartParty()
+    {
+        if (isEnabled && currentGhostCounter > 0)
+        {
+            StartCoroutine(Party());
+        }
+    }
+
+    IEnumerator Party()
+    {
+        party = true;
+        KickGhostsOut();
+        yield return new WaitForSeconds(partyTimer);
+        party = false;
     }
 
     public void HandleRightClick()
@@ -76,17 +114,27 @@ public class House : MonoBehaviour, IControllable
         _storedGhosts[_storedGhosts.Count-1].LeaveHouse(OffSetHousePosition());
         _storedGhosts.RemoveAt(_storedGhosts.Count - 1);
         currentGhostCounter--;
+        UpdateAnimationSpeed();
         UpdateUI();
     }
 
     public void HandleDeselect()
     {
-        return;
+        ChangeTimerColor(0f);
+        selectedUI.SetActive(false);
     }
 
     public void HandleSelected()
     {
-        return;
+        ChangeTimerColor(255f);
+        selectedUI.SetActive(true);
+    }
+
+    private void ChangeTimerColor(float alpha)
+    {
+        Color tmp = timerSpriteRenderer.color;
+        tmp.a = alpha;
+        timerSpriteRenderer.color = tmp;
     }
 
     private void UpdateUI()
@@ -113,24 +161,18 @@ public class House : MonoBehaviour, IControllable
         
         if (_currentTimer >= hauntingTimer)
         {
+            timerSpriteRenderer.enabled = false;
             isEnabled = false;
             _currentTimer = 0;
             
             GetComponentInParent<HouseController>().DecreaseActiveHouses();
-            _childSpriteRenderer.sprite = inactiveSprite;
+            houseSpriteRenderer.sprite = inactiveSprite;
             
             if (currentGhostTimer < maxGhostTimer)
             {
                 currentGhostTimer = 0;
-                
-                foreach (Ghost ghost in _storedGhosts)
-                {
-                    ghost.LeaveHouse(OffSetHousePosition());
-                    --currentGhostCounter;
-                }
 
-                _storedGhosts.Clear();
-                
+                KickGhostsOut();
                 return;
             }
             
@@ -141,16 +183,24 @@ public class House : MonoBehaviour, IControllable
             Instantiate(ghostPrefab, ghostSpawn.position, Quaternion.identity, ghostParent);
             _levelController.UpdateTotalHauntings();
 
-            foreach (Ghost ghost in _storedGhosts)
-            {
-                ghost.LeaveHouse(OffSetHousePosition());
-                --currentGhostCounter;
-            }
-
-            _storedGhosts.Clear();
+            KickGhostsOut();
             UpdateUI();
         }
         
+    }
+
+    private void KickGhostsOut()
+    {
+        foreach (Ghost ghost in _storedGhosts)
+        {
+            
+            ghost.LeaveHouse(OffSetHousePosition());
+            if (party) ghost.StartParty(partyTimer); 
+
+            --currentGhostCounter;
+        }
+
+        _storedGhosts.Clear();
     }
 
     public bool GetEnabled()
@@ -160,8 +210,12 @@ public class House : MonoBehaviour, IControllable
 
     public void SetEnabled()
     {
+        timerSpriteRenderer.enabled = true;
+        UpdateAnimationSpeed();
+        timerAnimator.SetTrigger(StartTimer);
+        timerAnimator.Play("Timer", -1, 0f);
         isEnabled = true;
-        _childSpriteRenderer.sprite = activeSprite;
+        houseSpriteRenderer.sprite = activeSprite;
     }
 
     private Vector2 OffSetHousePosition()
@@ -171,5 +225,11 @@ public class House : MonoBehaviour, IControllable
 
         var position = ghostSpawn.position;
         return new Vector2(position.x + xOffset, position.y + yOffset);
+    }
+
+    private void UpdateAnimationSpeed()
+    {
+        float timerMultiplier = Mathf.Clamp(currentGhostCounter, 1f, 3f);
+        timerAnimator.SetFloat(AnimationSpeed, animationSpeed * timerMultiplier);
     }
 }

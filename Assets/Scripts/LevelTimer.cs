@@ -50,7 +50,7 @@ public class LevelTimer : MonoBehaviour
                 AstarPath.active.Scan();
                 
                 section++;
-                if (section > 2)
+                if (section > 1)
                 {
                     FindObjectOfType<PartyGhostSpawner>().IncreasePartyGhosts();
                 }

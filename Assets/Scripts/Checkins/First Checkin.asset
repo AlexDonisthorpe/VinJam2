@@ -13,11 +13,7 @@ MonoBehaviour:
   m_Name: First Checkin
   m_EditorClassIdentifier: 
   successText: "So how are we doing here? Hmm it looks like you\u2019ve collected
-    enough ghosts, I guess that\u2019s to be expected though, the start is always
-    easy, isn\u2019t it old timer! Well I\u2019ll be checking back again later but
-    just remember, no slacking off or you\u2019ll be in trouble!"
+    enough ghosts, I guess that\u2019s to be expected though..."
   failText: "So how are we doing here? What!? You haven\u2019t even got a single
-    new ghost!? How have you managed to mess this up already!? Right! Well since
-    you like slacking off so much I think we are going to have to cancel your retirement
-    then and you can work for the rest of eternity!"
+    new ghost!?  Right! I guess I'll start the retirement cancellation papers early!"
   successHousesHaunted: 1

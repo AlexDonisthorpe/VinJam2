@@ -148,7 +148,7 @@ MonoBehaviour:
   selectedUI: {fileID: 5248357467856508858}
   timerAnimator: {fileID: 336074179331282112}
   timerSpriteRenderer: {fileID: 8580798029365196282}
-  animationSpeed: 1.5
+  animationSpeed: 1
   houseSpriteRenderer: {fileID: 48007098386088790}
   ghostParent: {fileID: 0}
 --- !u!61 &48007099064068555

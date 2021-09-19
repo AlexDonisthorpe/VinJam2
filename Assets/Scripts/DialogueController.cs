@@ -37,7 +37,7 @@ public class DialogueController : MonoBehaviour
         _bossChatController.ShowMessage(messageToSend);
         if (checkinCounter == 4)
         {
-            Invoke(nameof(EndGame), 5f);
+            Invoke(nameof(EndGame), 15f);
         }
         checkinCounter++;
     }

@@ -12,12 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d79e4fdcbe8bc704cb481574d669b570, type: 3}
   m_Name: Second Checkin
   m_EditorClassIdentifier: 
-  successText: "You there, old timer! I hear you\u2019re about to retire. Well lucky
-    for me then that I\u2019ve got someone experienced on the job. Since you\u2019re
-    not slacking off I think it\u2019s time to pick up the pace with more houses.
-    Now just make sure you don\u2019t slip up or we might need to reconsider your
-    retirement plans..."
-  failText: "You there, old timer! I hear you\u2019re about to retire. Well since
-    you\u2019ve been slacking off I think we will have to cancel that now. Good thing
-    I have many more houses for you to haunt now that I have you for all eternity!"
+  successText: "I hear you\u2019re one the verge of retirement! Since you\u2019re
+    doing so well, I think it\u2019s time to pick up the pace with more houses. My
+    treat!"
+  failText: You're not going to retire with this performance! Don't worry! with all
+    these houses, we'll keep you so busy, you won't even remember retirement is a
+    thing!
   successHousesHaunted: 3

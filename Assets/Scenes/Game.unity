@@ -6578,38 +6578,45 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 10535096299126980, guid: 0ba3b56d1c84c0d498fc6a8060bca4cd, type: 3}
+      propertyPath: bossMessages.Array.data[0]
+      value: Ah, just in time! The night is almost over and I need you to ensure
+        none of these houses get a wink of sleep!
+      objectReference: {fileID: 0}
+    - target: {fileID: 10535096299126980, guid: 0ba3b56d1c84c0d498fc6a8060bca4cd, type: 3}
+      propertyPath: bossMessages.Array.data[1]
+      value: "I\u2019ll be checking in regularly to make sure you all aren\u2019t
+        slacking off but I\u2019m sure this\u2019ll be easy for a veteran like you."
+      objectReference: {fileID: 0}
+    - target: {fileID: 10535096299126980, guid: 0ba3b56d1c84c0d498fc6a8060bca4cd, type: 3}
       propertyPath: playerMessages.Array.data[0]
       value: "Yes boss! So I click on the ghosts, click on the house to haunt, then
         wait until the house is fully haunted, right? Boss\u2026? Hello..?"
       objectReference: {fileID: 0}
     - target: {fileID: 10535096299126980, guid: 0ba3b56d1c84c0d498fc6a8060bca4cd, type: 3}
       propertyPath: playerMessages.Array.data[1]
-      value: "Yes boss! I noticed there are more larger houses now, can I get more
-        ghosts for my hauntings since that should speed up the hauntings in these
-        larger houses?  Boss\u2026? Hello..? *Sigh*"
+      value: "Yes boss! I noticed there are more larger houses now, I can use more
+        ghosts on these houses, right?  Boss\u2026? Hello..? *Sigh*"
       objectReference: {fileID: 0}
     - target: {fileID: 10535096299126980, guid: 0ba3b56d1c84c0d498fc6a8060bca4cd, type: 3}
       propertyPath: playerMessages.Array.data[2]
-      value: "Reconsider? But that can\u2019t be possible...Well I\u2019ll do my
-        best with these houses. I guess I just have to look out for the smaller pink
-        houses since they take a bit longer than the other smaller houses."
+      value: My retirement is on the line!... I guess I just have to look out for
+        the smaller pink houses since they take a bit longer than the other smaller
+        houses.
       objectReference: {fileID: 0}
     - target: {fileID: 10535096299126980, guid: 0ba3b56d1c84c0d498fc6a8060bca4cd, type: 3}
       propertyPath: playerMessages.Array.data[3]
-      value: "Yes Boss! I will keep my ghosts away from the party ghost, I just hope
-        he doesn\u2019t kick out my ghosts before they have finished haunting. About
-        my retirement, I was told this would be my last job before retiring, surely
-        cancelling it isn\u2019t fair, right, Boss?"
+      value: "Yes Boss! I will keep my ghosts away from the party ghost! Boss, I
+        was told this would be my last job before retiring, surely cancelling it
+        isn\u2019t fair, right, Boss?"
       objectReference: {fileID: 0}
     - target: {fileID: 10535096299126980, guid: 0ba3b56d1c84c0d498fc6a8060bca4cd, type: 3}
       propertyPath: playerMessages.Array.data[4]
-      value: "Yes Boss! This should be a piece of cake, there\u2019s only three new
-        houses now."
+      value: Ahhhh!!! Please let me retire! Boss... ?
       objectReference: {fileID: 0}
     - target: {fileID: 10535096299126980, guid: 0ba3b56d1c84c0d498fc6a8060bca4cd, type: 3}
       propertyPath: playerMessages.Array.data[5]
-      value: "Thank you Boss, thank you so much! Let me check first how many ghosts
-        I collected then I\u2019ll be off!"
+      value: The night is over! Huzzah! I made it! I can retire now, right Boss?
+        ...Boss?
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ba3b56d1c84c0d498fc6a8060bca4cd, type: 3}

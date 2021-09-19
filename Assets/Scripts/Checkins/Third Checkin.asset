@@ -12,12 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d79e4fdcbe8bc704cb481574d669b570, type: 3}
   m_Name: Third Checkin
   m_EditorClassIdentifier: 
-  successText: "So, you\u2019ve been keeping busy I see. Good, well I think it\u2019s
-    time to ramp things up with some more houses to haunt. Also I\u2019ve seen a
-    party ghost hanging around these parts, I\u2019ve spoken with HR but they can\u2019t
-    find his boss so don\u2019t let me catch any of your ghosts dancing with that
-    slacker or you\u2019ll be in trouble!"
-  failText: "What\u2019s this!? You couldn\u2019t haunt these houses in time! I knew
-    it, I knew you were a slacker! Well luckily for me I have you now for all eternity
-    as your retirement is now cancelled!"
+  successText: "Good! Good! Excellent work!  Also I\u2019ve heard reports of party
+    ghosts wandering around. Don\u2019t let me catch any of your ghosts dancing with
+    those slackers or I'll hold you accountable!"
+  failText: "What\u2019s this!? You couldn\u2019t haunt these houses in time!? This
+    is going on your permanent record! "
   successHousesHaunted: 13

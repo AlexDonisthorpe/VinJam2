@@ -65,8 +65,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: da1783cb0c0d14140adb31aaca8d1bc0, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -109,10 +109,10 @@ RectTransform:
   m_Father: {fileID: 1884643188}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 653, y: 488}
-  m_SizeDelta: {x: 439.6, y: 22.28}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -141}
+  m_SizeDelta: {x: 1000, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &669856159
 MonoBehaviour:
@@ -133,7 +133,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 2
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -236,7 +236,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 20, y: 0}
+  m_SizeDelta: {x: 130, y: 130}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1324551512
 CanvasRenderer:
@@ -266,7 +266,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: 3e43f6f569a0f2f4d845f698ebf431e3, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -377,8 +377,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 6b13d33a08152da4ab6af5ecd0f14a42, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -445,7 +445,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_TargetDisplay: 0
 --- !u!114 &1884643190
 MonoBehaviour:
@@ -497,6 +497,9 @@ GameObject:
   m_Component:
   - component: {fileID: 10535095457032774}
   - component: {fileID: 10535095457032769}
+  - component: {fileID: 10535096299126982}
+  - component: {fileID: 10535096299126980}
+  - component: {fileID: 10535096299126981}
   m_Layer: 0
   m_Name: Level Timer
   m_TagString: Untagged
@@ -531,5 +534,172 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36632c9ee4f7462448993d60de09ec05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelDurationInSeconds: 60
-  levelTimer: 60
+  levelDurationInSeconds: 300
+  levelTimer: 300
+  _maxSectionDuration: 60
+  _sectionTimer: 60
+--- !u!320 &10535096299126982
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 10535095457032768}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 11400000, guid: 07ca2970afd60ca4e9abf6d1c1d22d99, type: 2}
+  m_InitialState: 0
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings:
+  - key: {fileID: -1571722243021907361, guid: 07ca2970afd60ca4e9abf6d1c1d22d99, type: 2}
+    value: {fileID: 10535095457032768}
+  m_ExposedReferences:
+    m_References: []
+--- !u!114 &10535096299126980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 10535095457032768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d9affb2aac252f43805ce663414c140, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _checkins:
+  - {fileID: 11400000, guid: 28242fd50ddd194479b73b9b4ad93b68, type: 2}
+  - {fileID: 11400000, guid: e98f6746bef898145b1de81bbaebee1f, type: 2}
+  - {fileID: 11400000, guid: 578af048ba51a9e47a17279d4e9bf645, type: 2}
+  - {fileID: 11400000, guid: 98925b44ce2fc6444a3bc47b9a93a8de, type: 2}
+  - {fileID: 11400000, guid: 84f35450256cc1d46b5fc1df579fc454, type: 2}
+  bossMessages:
+  - Ah, just in time! The night is almost over and I need you to get these ghosts
+    into all of these dark houses so we can collect as many scares as possible before
+    the night is over.
+  - "I\u2019ll be checking in periodically to make sure you all aren\u2019t slacking
+    off but I\u2019m sure this\u2019ll be easy for a veteran like you though."
+  playerMessages:
+  - BoooooooOOoooOo!!!!
+--- !u!114 &10535096299126981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 10535095457032768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Events:
+    m_Signals:
+    - {fileID: 11400000, guid: 393f3734480eb334287f93d5dbbb9e5e, type: 2}
+    - {fileID: 11400000, guid: 956d4ae98cde5974f97a25d555c19d90, type: 2}
+    - {fileID: 11400000, guid: e71c937425a81f046b8697da308ffd3c, type: 2}
+    - {fileID: 11400000, guid: a035d43238575b944ac2664e1a661a96, type: 2}
+    - {fileID: 11400000, guid: 4ffa5b7d7331ada478e23b7795071967, type: 2}
+    - {fileID: 11400000, guid: 5dac36b12f047fa468f9ce8c7c01c414, type: 2}
+    - {fileID: 11400000, guid: eeffa588dd1e1864885a677c5c86021f, type: 2}
+    m_Events:
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 10535096299126980}
+          m_TargetAssemblyTypeName: DialogueController, Assembly-CSharp
+          m_MethodName: BossCheckin
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 10535096299126980}
+          m_TargetAssemblyTypeName: DialogueController, Assembly-CSharp
+          m_MethodName: PlayerChat
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 10535096299126980}
+          m_TargetAssemblyTypeName: DialogueController, Assembly-CSharp
+          m_MethodName: BossChat
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: test
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 10535096299126980}
+          m_TargetAssemblyTypeName: DialogueController, Assembly-CSharp
+          m_MethodName: ToggleBossPortrait
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 10535096299126980}
+          m_TargetAssemblyTypeName: DialogueController, Assembly-CSharp
+          m_MethodName: ToggleBossChat
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 10535096299126980}
+          m_TargetAssemblyTypeName: DialogueController, Assembly-CSharp
+          m_MethodName: TogglePlayerPortrait
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 10535096299126980}
+          m_TargetAssemblyTypeName: DialogueController, Assembly-CSharp
+          m_MethodName: TogglePlayerChat
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2

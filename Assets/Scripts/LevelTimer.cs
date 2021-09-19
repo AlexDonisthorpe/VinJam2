@@ -11,6 +11,7 @@ public class LevelTimer : MonoBehaviour
     [SerializeField] private float _sectionTimer;
 
     private Slider _slider;
+    private int section = 0;
     
     // Start is called before the first frame update
     void Start()
@@ -39,13 +40,6 @@ public class LevelTimer : MonoBehaviour
         if (_timer)
         {
             levelTimer -= Time.deltaTime;
-            if (levelTimer <= 0)
-            {
-                // End of Level
-                
-                Debug.Log("Level Complete");
-                return;
-            }
 
             _sectionTimer -= Time.deltaTime;
             if (_sectionTimer <= 0)
@@ -54,6 +48,12 @@ public class LevelTimer : MonoBehaviour
                 FindObjectOfType<HouseController>().UpdateTotalHouses();
                 FindObjectOfType<CameraScaler>().ScaleOut();
                 AstarPath.active.Scan();
+                
+                section++;
+                if (section > 2)
+                {
+                    FindObjectOfType<PartyGhostSpawner>().IncreasePartyGhosts();
+                }
             }
         }
         

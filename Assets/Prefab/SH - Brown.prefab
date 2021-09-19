@@ -132,6 +132,7 @@ MonoBehaviour:
   ghostPrefab: {fileID: 8443691246614493158, guid: 4e6385095cb5277409252742708b8a41, type: 3}
   hauntingTimer: 20
   _currentTimer: 0
+  partyTimer: 10
   currentGhostTimer: 0
   isEnabled: 0
   maxGhosts: 1
@@ -214,7 +215,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 48007099189798159}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.449, y: -0.038, z: 0}
+  m_LocalPosition: {x: 0.004, y: -0.628, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 48007099064068553}

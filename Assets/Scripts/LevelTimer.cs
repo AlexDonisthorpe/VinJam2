@@ -9,6 +9,7 @@ public class LevelTimer : MonoBehaviour
     private bool _timer = false;
     [SerializeField] private float _maxSectionDuration;
     [SerializeField] private float _sectionTimer = 0;
+    [SerializeField] private AudioClip levelMusic;
 
     private Slider _slider;
     private int section = 0;
@@ -28,6 +29,7 @@ public class LevelTimer : MonoBehaviour
         FindObjectOfType<Controller>().StartGame();
         FindObjectOfType<HouseController>().StartHousing();
         GetComponent<PlayableDirector>().Play();
+        FindObjectOfType<AudioController>().PlayMusic(ref levelMusic);
     }
 
     // Update is called once per frame

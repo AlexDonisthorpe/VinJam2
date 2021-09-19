@@ -28,6 +28,7 @@ public class AudioController : MonoBehaviour
 
     public void PlayMusic(ref AudioClip music)
     {
+        _pauseSource.Pause();
         _musicSource.Stop();
         _musicSource.clip = music;
         _musicSource.Play();

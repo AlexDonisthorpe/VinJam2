@@ -50,8 +50,11 @@ public class Controller : MonoBehaviour
                 }
                 
                 // Select the new object
-                selectedObject = hitData.transform.gameObject;
-                selectedObject.GetComponent<IControllable>().HandleSelected();
+                if (hitData.transform.gameObject.GetComponent<IControllable>() != null)
+                {
+                    selectedObject = hitData.transform.gameObject;
+                    selectedObject.GetComponent<IControllable>().HandleSelected();
+                }
             }
         }
 

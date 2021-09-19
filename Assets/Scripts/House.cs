@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -12,6 +13,8 @@ public class House : MonoBehaviour, IControllable
     // Timer parameters for tracking the duration of the haunting
     [SerializeField] private float hauntingTimer = 10f;
     [SerializeField] private float _currentTimer = 0;
+
+    [SerializeField] private float partyTimer = 10f;
     
     // Timer parameters for tracking how long a ghost has been in the house
     // to track contribution
@@ -43,6 +46,8 @@ public class House : MonoBehaviour, IControllable
     private LevelController _levelController;
     private SpriteRenderer _childSpriteRenderer;
     [SerializeField] private Transform ghostParent;
+
+    private bool party = false;
     
     private void OnEnable()
     {
@@ -54,6 +59,7 @@ public class House : MonoBehaviour, IControllable
 
     private void OnTriggerStay2D(Collider2D other)
     {
+        if (party) return;
         if (!isEnabled || currentGhostCounter == maxGhosts) return;
 
         Ghost ghost = other.gameObject.GetComponent<Ghost>();
@@ -67,6 +73,32 @@ public class House : MonoBehaviour, IControllable
             currentGhostCounter++;
             UpdateUI();
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (party || !isEnabled || currentGhostCounter == 0) return;
+        if (other.GetComponent<PartyGhost>() != null)
+        {
+            other.GetComponent<PartyGhost>().Party();
+            StartParty();
+        }
+    }
+
+    public void StartParty()
+    {
+        if (isEnabled && currentGhostCounter > 0)
+        {
+            StartCoroutine(Party());
+        }
+    }
+
+    IEnumerator Party()
+    {
+        party = true;
+        KickGhostsOut();
+        yield return new WaitForSeconds(partyTimer);
+        party = false;
     }
 
     public void HandleRightClick()
@@ -122,15 +154,8 @@ public class House : MonoBehaviour, IControllable
             if (currentGhostTimer < maxGhostTimer)
             {
                 currentGhostTimer = 0;
-                
-                foreach (Ghost ghost in _storedGhosts)
-                {
-                    ghost.LeaveHouse(OffSetHousePosition());
-                    --currentGhostCounter;
-                }
 
-                _storedGhosts.Clear();
-                
+                KickGhostsOut();
                 return;
             }
             
@@ -151,6 +176,20 @@ public class House : MonoBehaviour, IControllable
             UpdateUI();
         }
         
+    }
+
+    private void KickGhostsOut()
+    {
+        foreach (Ghost ghost in _storedGhosts)
+        {
+            
+            ghost.LeaveHouse(OffSetHousePosition());
+            if (party) ghost.StartParty(partyTimer); 
+
+            --currentGhostCounter;
+        }
+
+        _storedGhosts.Clear();
     }
 
     public bool GetEnabled()

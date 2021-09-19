@@ -34,12 +34,12 @@ public class HouseController : MonoBehaviour
     {
         if (gameStarted && _currentActiveHouses < maxActiveHouses )
         {
-            GetRandomHouse().SetEnabled();
+            GetRandomDisabledHouse().SetEnabled();
             _currentActiveHouses++;
         }
     }
 
-    private House GetRandomHouse()
+    public House GetRandomDisabledHouse()
     {
         while (true)
         {
@@ -50,6 +50,12 @@ public class HouseController : MonoBehaviour
                 return _houses[index];
             }
         }
+    }
+    
+    public House GetRandomHouse()
+    {
+            int index = Random.Range(0, _houses.Count);
+            return _houses[index];
     }
 
     public void DecreaseActiveHouses()

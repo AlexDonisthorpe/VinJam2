@@ -174,7 +174,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: -0.00000011920929, y: -0.00000011920929}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.75
 --- !u!50 &11208390
 Rigidbody2D:
   serializedVersion: 4
@@ -236,7 +236,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b80e866124b9d084ca71dd8addd0b013, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 30
+  moveSpeed: 40
   nextWaypointDistance: 0.3
 --- !u!212 &11208393
 SpriteRenderer:
@@ -301,16 +301,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ed1f32b72c40694eb04f1e1db11e910, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _destinations:
-  - {fileID: 1154236949}
-  - {fileID: 1219767186}
-  - {fileID: 1647813899}
-  - {fileID: 868070740}
-  - {fileID: 2114321394}
-  - {fileID: 263246772}
-  - {fileID: 1117859128}
-  - {fileID: 640994211}
-  - {fileID: 615594233}
   targetSwapRange: 1
 --- !u!1 &32693214 stripped
 GameObject:
@@ -3367,6 +3357,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63163663303d505419648de0f3ba56f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxActiveHousesPerLevel: 02000000030000000500000007000000
   maxActiveHouses: 1
   _currentActiveHouses: 0
   _firstSetOfHouses:
@@ -5298,6 +5289,18 @@ PrefabInstance:
     - target: {fileID: 8443691246614493158, guid: 4e6385095cb5277409252742708b8a41, type: 3}
       propertyPath: m_Name
       value: Ghost
+      objectReference: {fileID: 0}
+    - target: {fileID: 8443691246614493159, guid: 4e6385095cb5277409252742708b8a41, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8443691246614493159, guid: 4e6385095cb5277409252742708b8a41, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8443691246614493159, guid: 4e6385095cb5277409252742708b8a41, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8443691246614493159, guid: 4e6385095cb5277409252742708b8a41, type: 3}
       propertyPath: m_SortingOrder

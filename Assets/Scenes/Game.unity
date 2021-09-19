@@ -1687,6 +1687,10 @@ PrefabInstance:
       propertyPath: ghostParent
       value: 
       objectReference: {fileID: 621660325}
+    - target: {fileID: 48007099064068552, guid: afe2929438b2b6540a6f768018a73eb2, type: 3}
+      propertyPath: animationSpeed
+      value: 0.75
+      objectReference: {fileID: 0}
     - target: {fileID: 48007099064068553, guid: afe2929438b2b6540a6f768018a73eb2, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -4341,6 +4345,10 @@ PrefabInstance:
       propertyPath: ghostParent
       value: 
       objectReference: {fileID: 621660325}
+    - target: {fileID: 48007099064068552, guid: e347466a640f66e4dbd794498bef02dd, type: 3}
+      propertyPath: animationSpeed
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 48007099064068553, guid: e347466a640f66e4dbd794498bef02dd, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -4388,6 +4396,18 @@ PrefabInstance:
     - target: {fileID: 48007099064068559, guid: e347466a640f66e4dbd794498bef02dd, type: 3}
       propertyPath: m_Name
       value: SH - Blue
+      objectReference: {fileID: 0}
+    - target: {fileID: 2005344235826166762, guid: e347466a640f66e4dbd794498bef02dd, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2005344235826166762, guid: e347466a640f66e4dbd794498bef02dd, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9056202231316721848, guid: e347466a640f66e4dbd794498bef02dd, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e347466a640f66e4dbd794498bef02dd, type: 3}

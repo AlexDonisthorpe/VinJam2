@@ -130,7 +130,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ghostPrefab: {fileID: 8443691246614493158, guid: 4e6385095cb5277409252742708b8a41, type: 3}
-  hauntingTimer: 20
+  hauntingTimer: 30
   _currentTimer: 0
   currentGhostTimer: 0
   isEnabled: 0

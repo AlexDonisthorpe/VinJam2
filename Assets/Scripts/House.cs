@@ -38,6 +38,7 @@ public class House : MonoBehaviour, IControllable
     [SerializeField] private GameObject infoUICanvas;
     [SerializeField] private Sprite activeSprite;
     [SerializeField] private Sprite inactiveSprite;
+    [SerializeField] private GameObject selectedUI;
     
     // List of ghosts in the house
     private List<Ghost> _storedGhosts;
@@ -113,12 +114,12 @@ public class House : MonoBehaviour, IControllable
 
     public void HandleDeselect()
     {
-        return;
+        selectedUI.SetActive(false);
     }
 
     public void HandleSelected()
     {
-        return;
+        selectedUI.SetActive(true);
     }
 
     private void UpdateUI()

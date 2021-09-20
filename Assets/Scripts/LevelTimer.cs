@@ -25,6 +25,8 @@ public class LevelTimer : MonoBehaviour
 
     public void StartTimer()
     {
+        _sectionTimer = 0;
+        levelTimer = 0;
         _timer = true;
         FindObjectOfType<Controller>().StartGame();
         FindObjectOfType<HouseController>().StartHousing();

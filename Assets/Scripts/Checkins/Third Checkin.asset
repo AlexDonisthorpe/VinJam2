@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Third Checkin
   m_EditorClassIdentifier: 
   successText: "Good! Good! Excellent work!  Also I\u2019ve heard reports of party
-    ghosts wandering around. Don\u2019t let me catch any of your ghosts dancing with
-    those slackers or I'll hold you accountable!"
+    ghosts wandering around. Don\u2019t let me catch any of your ghosts boo-gying
+    with those slackers!"
   failText: "What\u2019s this!? You couldn\u2019t haunt these houses in time!? This
-    is going on your permanent record! "
+    is a spooctactular failure!"
   successHousesHaunted: 13

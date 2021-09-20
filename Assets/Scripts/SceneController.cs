@@ -23,7 +23,7 @@ public class SceneController : MonoBehaviour
         UnityEditor.EditorApplication.isPlaying = false;
 
 #elif UNITY_WEBPLAYER
-            Application.OpenURL("https://itch.io/");
+            Application.OpenURL("https://ldrg.itch.io/deptofhauntingresources");
 
 #else
             Application.Quit();

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: First Checkin
   m_EditorClassIdentifier: 
   successText: "So how are we doing here? Hmm it looks like you\u2019ve collected
-    enough ghosts, I guess that\u2019s to be expected though..."
+    enough ghosts, time to move the ghoulposts up a notch!"
   failText: "So how are we doing here? What!? You haven\u2019t even got a single
     new ghost!?  Right! I guess I'll start the retirement cancellation papers early!"
   successHousesHaunted: 1

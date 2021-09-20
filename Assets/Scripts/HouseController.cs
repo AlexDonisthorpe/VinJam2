@@ -9,7 +9,7 @@ public class HouseController : MonoBehaviour
     [SerializeField] int _currentActiveHouses = 0;
     private List<House> _houses = new List<House>();
 
-    private static int currentSet = 0;
+    private int currentSet = 0;
 
     [SerializeField] private House[] _firstSetOfHouses;
     [SerializeField] private House[] _secondSetOfHouses;

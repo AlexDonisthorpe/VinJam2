@@ -3,6 +3,7 @@ using UnityEngine;
 public class MainMenu : MonoBehaviour
 {
     [SerializeField] private GameObject optionsMenu;
+    [SerializeField] private GameObject howToPlay;
 
     public void StartGame()
     {
@@ -12,6 +13,12 @@ public class MainMenu : MonoBehaviour
     public void LoadOptions()
     {
         optionsMenu.SetActive(true);
+        gameObject.SetActive(false);
+    }
+    
+    public void LoadHowTo()
+    {
+        howToPlay.SetActive(true);
         gameObject.SetActive(false);
     }
 

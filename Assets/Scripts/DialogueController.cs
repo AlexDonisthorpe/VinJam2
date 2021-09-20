@@ -7,9 +7,9 @@ public class DialogueController : MonoBehaviour
     [TextArea] [SerializeField] private String[] bossMessages;
     [TextArea] [SerializeField] private String[] playerMessages;
     
-    private static int checkinCounter = 0;
-    private static int bossMessageCounter = 0;
-    private static int playerMessageCounter = 0;
+    private int checkinCounter = 0;
+    private int bossMessageCounter = 0;
+    private int playerMessageCounter = 0;
 
     private BossChatController _bossChatController;
     private PlayerChatController _playerChatController;

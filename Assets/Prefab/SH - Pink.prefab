@@ -141,7 +141,7 @@ MonoBehaviour:
   currentGhostCounter: 0
   ghostSpawn: {fileID: 48007099189798152}
   minOffset: 0
-  maxOffset: 0.2
+  maxOffset: 0.3
   infoUICanvas: {fileID: 0}
   activeSprite: {fileID: 21300000, guid: ab7a97a6fca823b45b01deaa7faa2e7b, type: 3}
   inactiveSprite: {fileID: 21300000, guid: 39f9babbd92e70743989c1a8d5ff63e6, type: 3}

@@ -15,7 +15,6 @@ MonoBehaviour:
   successText: "So you made it the whole night without slacking. I guess you are
     as good as they say. Well don\u2019t just stand there, get out of my sight before
     I find you more work to do!"
-  failText: "So, you really don\u2019t want to retire I see.  I\u2019ll just have
-    to keep you here for the rest of eternity now. Fix yourself up because I have
-    another job for you!"
+  failText: "So, you really don\u2019t want to retire! I see.  I\u2019ll just have
+    to keep you here for the rest of eternity now. Welcome to the new paranormal!"
   successHousesHaunted: 38
